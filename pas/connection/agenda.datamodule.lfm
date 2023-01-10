@@ -1,0 +1,67 @@
+object dm: Tdm
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 113
+  HorizontalOffset = 462
+  VerticalOffset = 208
+  Width = 331
+  object ContatosDBF: TDbf
+    Exclusive = True
+    IndexDefs = <    
+      item
+        Options = [ixCaseInsensitive]
+      end>
+    OpenMode = omAutoCreate
+    TableName = 'CONTATOS.DBF'
+    TableLevel = 4
+    FilterOptions = []
+    AfterOpen = ContatosDBFAfterOpen
+    BeforePost = ContatosDBFBeforePost
+    Left = 32
+    Top = 16
+  end
+  object SequenciaDBF: TDbf
+    Exclusive = True
+    IndexDefs = <    
+      item
+        Options = []
+      end>
+    OpenMode = omAutoCreate
+    TableName = 'SEQUENCIA.DBF'
+    TableLevel = 4
+    FilterOptions = []
+    AfterOpen = SequenciaDBFAfterOpen
+    Left = 112
+    Top = 16
+  end
+  object HistoricoDBF: TDbf
+    Exclusive = True
+    IndexDefs = <    
+      item
+        Options = [ixDescending]
+      end>
+    OpenMode = omAutoCreate
+    TableName = 'HISTORICO.DBF'
+    TableLevel = 4
+    FilterOptions = []
+    AfterOpen = HistoricoDBFAfterOpen
+    BeforePost = HistoricoDBFBeforePost
+    Left = 192
+    Top = 16
+  end
+  object UsuariosDBF: TDbf
+    Exclusive = True
+    IndexDefs = <    
+      item
+        Options = []
+      end>
+    OpenMode = omAutoCreate
+    TableName = 'USUARIOS.DBF'
+    TableLevel = 4
+    FilterOptions = []
+    AfterOpen = UsuariosDBFAfterOpen
+    BeforePost = UsuariosDBFBeforePost
+    Left = 264
+    Top = 16
+  end
+end

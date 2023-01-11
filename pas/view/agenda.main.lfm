@@ -1,13 +1,13 @@
 object frmMain: TfrmMain
-  Left = -898
+  Left = 354
   Height = 510
-  Top = 132
+  Top = 63
   Width = 825
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Agenda'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 510
+  ClientWidth = 825
   KeyPreview = True
   OnClose = FormClose
   OnCreate = FormCreate
@@ -426,9 +426,9 @@ object frmMain: TfrmMain
         Height = 451
         Top = 0
         Width = 633
-        ActivePage = tbsContatos
+        ActivePage = tbsUsuarios
         Align = alClient
-        TabIndex = 0
+        TabIndex = 3
         TabOrder = 0
         object tbsContatos: TTabSheet
           Caption = 'tbsContatos'
@@ -1791,7 +1791,7 @@ object frmMain: TfrmMain
             DataSource = dtsUsuarios
             FixedColor = clWhite
             FixedHotColor = clWhite
-            Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+            Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgCancelOnExit]
             TabOrder = 1
           end
           object pnlCadastroUsuarios: TPanel

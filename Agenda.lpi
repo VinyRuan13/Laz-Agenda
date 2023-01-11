@@ -73,6 +73,18 @@
         <Filename Value="pas\class\agenda.funcao.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="pas\view\agenda.message.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmMessage"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="pas\view\agenda.loading.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmLoading"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

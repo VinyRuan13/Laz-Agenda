@@ -36,8 +36,8 @@ implementation
 procedure TFuncao.setarInfoVersao();
 begin
   //''versão compilada!''.
-  dataVersao := '09/01/2023 ';
-  versao := '23.01.08.01_01 ';
+  dataVersao := '10/01/2023 ';
+  versao := '23.01.10.01_01 ';
   dev := 'Vinícius Ruan Brandalize';
 end;
 
@@ -168,19 +168,35 @@ end;
 function TFuncao.apagarIndices(caminho : String): Boolean;
 var
   SearchRec : TSearchRec;
-  ok : Boolean;
+  semErros : Boolean;
+  apagado: Boolean;
 begin
-  ok := False;
+
+  semErros := False;
+  apagado := False;
+
   try
+
     FindFirst(caminho+'*.NTX', faAnyFile, SearchRec);
+
     repeat
-      DeleteFile(caminho+SearchRec.Name);
-    until FindNext(SearchRec) <> 0;
-    ok := True;
+    if DeleteFile(caminho+SearchRec.Name) then
+    begin
+      apagado := True;
+				end
+    else
+    begin
+      apagado := False;
+      Break;
+				end;
+				until FindNext(SearchRec) <> 0;
+
+    semErros := True;
+
   finally
     FindClose(SearchRec);
   end;
-  Result := ok;
+  Result := semErros and apagado;
 end;
 
 end.

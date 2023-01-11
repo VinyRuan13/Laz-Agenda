@@ -11,7 +11,7 @@ uses
  {$ENDIF}
  Interfaces, // this includes the LCL widgetset
  Forms, Controls, rxnew, datetimectrls, agenda.main, agenda.datamodule,
-	agenda.login, agenda.funcao
+	agenda.login, agenda.funcao, agenda.message, agenda.loading
  { you can add units after this };
 
 {$R *.res}
@@ -20,8 +20,8 @@ begin
  RequireDerivedFormResource:=True;
 	Application.Scaled:=True;
  Application.Initialize;
- Application.CreateForm(Tdm, dm);
- Application.CreateForm(TfrmMain, frmMain);
+	Application.CreateForm(Tdm, dm);
+	Application.CreateForm(TfrmMain, frmMain);
  frmLogin := TfrmLogin.Create(nil);
 
  if frmLogin.ShowModal = mrOK then

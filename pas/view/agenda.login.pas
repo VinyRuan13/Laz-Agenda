@@ -6,7 +6,7 @@ interface
 
 uses
  Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
- Buttons, ActnList, agenda.funcao, LCLType;
+ Buttons, ActnList, agenda.funcao, agenda.message;
 
 type
 
@@ -18,6 +18,7 @@ type
    imgAgenda: TImage;
    lblEdtUsuario: TLabeledEdit;
    lblEdtSenha: TLabeledEdit;
+			pnlVersao: TPanel;
    pnlCabecalho: TPanel;
    plnRodape: TPanel;
    pnlPrincipal: TPanel;
@@ -83,8 +84,8 @@ begin
  end
  else
  Begin
-   Application.MessageBox('O usuário/senha informado(a) não existe!',
-                 'Acesso Negado!', MB_ICONERROR + MB_OK);
+   TfrmMessage.Mensagem('O usuário/senha informado(a) não existe!',
+                        'Acesso Negado!', 'E', [mbOk]);
  end;
 end;
 
@@ -100,6 +101,10 @@ begin
   begin
     funcao := TFuncao.Create;
   end;
+
+  funcao.setarInfoVersao();
+  pnlVersao.Caption := 'Versão: '+funcao.versao+' Data: '+funcao.dataVersao;
+
 end;
 
 procedure TfrmLogin.FormClose(Sender: TObject; var CloseAction: TCloseAction);

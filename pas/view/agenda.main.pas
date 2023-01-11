@@ -7,7 +7,7 @@ interface
 uses
  Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, ExtCtrls, ActnList,
 	Buttons, ComCtrls, DBGrids, DBCtrls, StdCtrls, DBDateTimePicker,
-	agenda.funcao, agenda.datamodule, LCLType;
+	agenda.funcao, agenda.datamodule, agenda.message, LCLType;
 
 type
 
@@ -235,13 +235,13 @@ end;
 
 procedure TfrmMain.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 var
- confirmacao : Integer;
+ Sair : Boolean;
 begin
 
-  confirmacao := Application.MessageBox('Deseja realmente sair do sistema ?',
-                 'Alerta', MB_ICONQUESTION + MB_YESNO);
+  Sair := TfrmMessage.Mensagem('Deseja realmente sair do sistema ?',
+                               'Mensagem', 'Q', [mbNao, mbSim]);
 
-  if confirmacao = mrNo then
+  if not Sair then
   begin
     Abort;
   end;
@@ -259,12 +259,15 @@ end;
 
 procedure TfrmMain.actIndexarExecute(Sender: TObject);
 var
- confirmacao : Integer;
+ indexar : Boolean;
 begin
-  confirmacao := Application.MessageBox('Deseja realmente indexar os arquivos ?',
-                 'Alerta', MB_ICONQUESTION + MB_YESNO);
+  TfrmMessage.Mensagem('Antes de prosseguir com a operação, certifique que o ' +
+                        'sistema esteja fechado em todos os usuários/processos!',
+                        'Alerta!', 'C', [mbOk]);
+  indexar := TfrmMessage.Mensagem('Deseja realmente indexar os arquivos ?',
+                        'Alerta!', 'Q', [mbNao, mbSim]);
 
-  if confirmacao = mrYes then
+  if indexar then
   begin
     dm.indexarTodos();
   end;

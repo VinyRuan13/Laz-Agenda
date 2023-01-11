@@ -5,7 +5,8 @@ unit agenda.datamodule;
 interface
 
 uses
- Classes, SysUtils, dbf, IniFiles, DB, agenda.funcao, LCLType, Dialogs, Forms;
+ Classes, SysUtils, dbf, IniFiles, DB, agenda.funcao, agenda.message,
+ agenda.loading;
 
 type
 
@@ -29,6 +30,7 @@ type
   procedure definirLocalDBFs();
   procedure criarArquivoIni();
   procedure definirIndices();
+  procedure abrirFecharTabelas(Operacao : String);
   function atualizarSequencia(Tabela : String) : Integer;
 
  public
@@ -36,6 +38,7 @@ type
   userLogado : String;
   idUserLogado : Integer;
   procedure indexarTodos();
+  procedure fecharIndices();
  end;
 
 var
@@ -173,6 +176,24 @@ begin
 
 end;
 
+procedure Tdm.abrirFecharTabelas(Operacao: String);
+begin
+  if Operacao = 'ABRIR' then
+  begin
+    ContatosDBF.Open;
+    HistoricoDBF.Open;
+    UsuariosDBF.Open;
+    SequenciaDBF.Open;
+  end;
+  if Operacao = 'FECHAR' then
+  begin
+    ContatosDBF.Close;
+    HistoricoDBF.Close;
+    UsuariosDBF.Close;
+    SequenciaDBF.Close;
+  end;
+end;
+
 function Tdm.atualizarSequencia(Tabela : String) : Integer;
 var
   campo : String;
@@ -215,27 +236,46 @@ end;
 
 procedure Tdm.indexarTodos;
 begin
+
+  abrirFecharTabelas('FECHAR');
+
   if funcao.apagarIndices(dm.SettingsIni.ReadString('NTX', 'PATH', '')) then
   Begin
     try
+
+      abrirFecharTabelas('ABRIR');
 
       UsuariosDBF.OpenIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'USUARIOS.NTX');
       SequenciaDBF.OpenIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'SEQUENCIA.NTX');
       ContatosDBF.OpenIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'CONTATOS.NTX');
       HistoricoDBF.OpenIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'HISTORICO.NTX');
 
-      Application.MessageBox('A indexação foi realizada com sucesso!',
-                 'Sucesso!', MB_ICONINFORMATION + MB_OK);
+      TfrmMessage.Mensagem('A indexação foi realizada com sucesso!',
+                        'Sucesso!', 'I', [mbOk]);
+
     except on ex:Exception do
-      Application.MessageBox('Erro ao criar os arquivos .NTX ?',
-                 'Erro!', MB_ICONERROR + MB_OK);
+    begin
+
+      TfrmMessage.Mensagem('Erro ao criar os arquivos .NTX ','Erro!', 'E', [mbOk]);
+
+    end;
     end;
 		end
   else
   begin
-    Application.MessageBox('Erro ao deletar os arquivos .NTX ?',
-                 'Erro!', MB_ICONERROR + MB_OK);
-		end;
+
+    TfrmMessage.Mensagem('Erro ao deletar os arquivos .NTX ','Erro!', 'E', [mbOk]);
+
+  end;
+
+end;
+
+procedure Tdm.fecharIndices;
+begin
+  UsuariosDBF.CloseIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'USUARIOS.NTX');
+  SequenciaDBF.CloseIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'SEQUENCIA.NTX');
+  ContatosDBF.CloseIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'CONTATOS.NTX');
+  HistoricoDBF.CloseIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'HISTORICO.NTX');
 end;
 
 end.

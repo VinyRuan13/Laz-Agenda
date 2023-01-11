@@ -6,7 +6,6 @@ object dm: Tdm
   VerticalOffset = 208
   Width = 331
   object ContatosDBF: TDbf
-    Exclusive = True
     IndexDefs = <    
       item
         Options = [ixCaseInsensitive]
@@ -21,7 +20,6 @@ object dm: Tdm
     Top = 16
   end
   object SequenciaDBF: TDbf
-    Exclusive = True
     IndexDefs = <    
       item
         Options = []
@@ -35,7 +33,6 @@ object dm: Tdm
     Top = 16
   end
   object HistoricoDBF: TDbf
-    Exclusive = True
     IndexDefs = <    
       item
         Options = [ixDescending]
@@ -50,7 +47,6 @@ object dm: Tdm
     Top = 16
   end
   object UsuariosDBF: TDbf
-    Exclusive = True
     IndexDefs = <    
       item
         Options = []

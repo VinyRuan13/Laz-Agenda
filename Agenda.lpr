@@ -10,8 +10,8 @@ uses
  athreads,
  {$ENDIF}
  Interfaces, // this includes the LCL widgetset
- Forms, Controls, rxnew, datetimectrls, agenda.main, agenda.datamodule,
-	agenda.login, agenda.funcao, agenda.message, agenda.loading
+ Forms, Controls, rxnew, datetimectrls, agenda.main,
+	agenda.datamodule, agenda.login, agenda.funcao, agenda.message, agenda.loading
  { you can add units after this };
 
 {$R *.res}

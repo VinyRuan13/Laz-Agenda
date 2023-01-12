@@ -36,8 +36,8 @@ implementation
 procedure TFuncao.setarInfoVersao();
 begin
   //''versão compilada!''.
-  dataVersao := '10/01/2023 ';
-  versao := '23.01.10.01_01 ';
+  dataVersao := '11/01/2023 ';
+  versao := '23.01.11.02_02 ';
   dev := 'Vinícius Ruan Brandalize';
 end;
 

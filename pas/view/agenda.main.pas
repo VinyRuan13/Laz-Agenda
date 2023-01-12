@@ -18,8 +18,6 @@ type
   actHistoricoLogin: TAction;
   actConfiguracoes: TAction;
 		actIndexar: TAction;
-		actPesquisarContatos: TAction;
-		actPesquisarUsuarios: TAction;
 		actSairMenu: TAction;
   actUsuarios: TAction;
   actSair: TAction;
@@ -50,6 +48,7 @@ type
 		edtBuscaContatos: TEdit;
 		edtSenhaUsuario: TEdit;
 		edtSenhaAntigaUsuario: TEdit;
+		imgManutencao: TImage;
 		imgUserLogado: TImage;
   imgPrincipal: TImage;
   imgList: TImageList;
@@ -71,6 +70,7 @@ type
   pageControl: TPageControl;
 		pnlBuscaUsuarios: TPanel;
 		pnlBuscaContatos: TPanel;
+		pnlTituloConfig: TPanel;
 		pnlUsuarioLogado: TPanel;
 		pnlAttContatos: TPanel;
 		pnlAttUsuarios: TPanel;
@@ -84,7 +84,6 @@ type
   pnlPrincipal: TPanel;
 		pnlTituloHistorico: TPanel;
 		pnlTituloUsuario: TPanel;
-		sbtnBuscaContatos: TSpeedButton;
 		sbtnIndexar: TSpeedButton;
   sbtnContatos: TSpeedButton;
   sbtnHistorico: TSpeedButton;
@@ -92,14 +91,16 @@ type
   sbtnSair: TSpeedButton;
 		sbtnSairHistorico: TSpeedButton;
 		sbtnSairUsuarios: TSpeedButton;
+		sbtnSairConfig: TSpeedButton;
   sbtnUsuarios: TSpeedButton;
 		sbtnSairContatos: TSpeedButton;
-		sbtnBuscaUsuarios: TSpeedButton;
+		tbsConfiguracao: TTabSheet;
 		tbsUsuarios: TTabSheet;
   tbsMain: TTabSheet;
   tbsContatos: TTabSheet;
   tbsHistoricoLogin: TTabSheet;
   timer: TTimer;
+		procedure actConfiguracoesExecute(Sender: TObject);
   procedure actContatosExecute(Sender: TObject);
 		procedure actHistoricoLoginExecute(Sender: TObject);
 		procedure actIndexarExecute(Sender: TObject);
@@ -110,6 +111,8 @@ type
 		procedure actUsuariosExecute(Sender: TObject);
 		procedure dtsContatosDataChange(Sender: TObject; Field: TField);
 		procedure dtsUsuariosStateChange(Sender: TObject);
+		procedure edtBuscaUsuariosChange(Sender: TObject);
+		procedure edtSenhaAntigaUsuarioChange(Sender: TObject);
 		procedure edtSenhaUsuarioChange(Sender: TObject);
 		procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
   procedure FormCreate(Sender: TObject);
@@ -228,6 +231,25 @@ begin
   end;
 end;
 
+procedure TfrmMain.edtBuscaUsuariosChange(Sender: TObject);
+var
+ i : Integer;
+begin
+  if TryStrToInt(edtBuscaUsuarios.Text, i) then
+  begin
+    dtsUsuarios.DataSet.Locate('ID', i, []);
+  end
+  else
+  begin
+    dtsUsuarios.DataSet.Locate('NOME', edtBuscaUsuarios.Text, [loCaseInsensitive, loPartialKey]);
+		end;
+end;
+
+procedure TfrmMain.edtSenhaAntigaUsuarioChange(Sender: TObject);
+begin
+  dm.txtSenhaAntiga := edtSenhaAntigaUsuario.Text;
+end;
+
 procedure TfrmMain.edtSenhaUsuarioChange(Sender: TObject);
 begin
   dm.txtSenha := edtSenhaUsuario.Text;
@@ -250,6 +272,13 @@ end;
 procedure TfrmMain.actContatosExecute(Sender: TObject);
 begin
   pageControl.ActivePage := tbsContatos;
+end;
+
+procedure TfrmMain.actConfiguracoesExecute(Sender: TObject);
+begin
+  pageControl.ActivePage := tbsConfiguracao;
+  TfrmMessage.Mensagem('Página em desenvolvimento.'+#13+'Aguarde por novidades... :)',
+                                  'Mensagem', 'I', [mbOk]);
 end;
 
 procedure TfrmMain.actHistoricoLoginExecute(Sender: TObject);

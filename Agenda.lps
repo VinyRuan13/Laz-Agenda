@@ -9,8 +9,8 @@
         <Filename Value="Agenda.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="3"/>
-        <CursorPos X="16"/>
-        <UsageCount Value="84"/>
+        <CursorPos X="39" Y="13"/>
+        <UsageCount Value="90"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -19,9 +19,10 @@
         <ComponentName Value="frmMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="252"/>
-        <CursorPos X="40" Y="271"/>
-        <UsageCount Value="84"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="311"/>
+        <CursorPos X="48" Y="323"/>
+        <UsageCount Value="90"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -32,9 +33,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="28"/>
-        <CursorPos X="19" Y="46"/>
-        <UsageCount Value="84"/>
+        <TopLine Value="152"/>
+        <CursorPos X="22" Y="164"/>
+        <UsageCount Value="90"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -44,11 +45,10 @@
         <ComponentName Value="frmLogin"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <TopLine Value="94"/>
         <CursorPos X="77" Y="106"/>
-        <UsageCount Value="84"/>
+        <UsageCount Value="90"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -56,18 +56,19 @@
         <Filename Value="pas\class\agenda.funcao.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="4"/>
-        <CursorPos X="25" Y="16"/>
-        <UsageCount Value="48"/>
+        <CursorPos X="36" Y="30"/>
+        <UsageCount Value="54"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="pas\view\agenda.message.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmMessage"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="1"/>
         <CursorPos X="50" Y="67"/>
-        <UsageCount Value="27"/>
+        <UsageCount Value="33"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -75,135 +76,136 @@
         <Filename Value="pas\view\agenda.loading.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmLoading"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="6"/>
         <TopLine Value="16"/>
         <CursorPos X="3" Y="36"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="28"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="pas\connection\agenda.datamodule.pas"/>
-        <Caret Line="238" Column="12" TopLine="235"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="11" Column="42"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="15" Column="33"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="16" Column="33"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="17" Column="23" TopLine="9"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="19" Column="23" TopLine="9"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="20" Column="23" TopLine="9"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="21" Column="23" TopLine="9"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="23" Column="45" TopLine="9"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="27" Column="48" TopLine="10"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="28" Column="48" TopLine="10"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="29" Column="48" TopLine="10"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="30" Column="48" TopLine="10"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="31" Column="48" TopLine="10"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="34" Column="24" TopLine="21"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="98" Column="36" TopLine="87"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="99" Column="36" TopLine="88"/>
+        <Filename Value="pas\view\agenda.main.pas"/>
+        <Caret Line="234" Column="48" TopLine="221"/>
       </Position>
       <Position>
         <Filename Value="pas\view\agenda.main.pas"/>
-        <Caret Line="243" Column="37" TopLine="229"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="105" Column="23" TopLine="88"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.main.pas"/>
-        <Caret Line="244" Column="16" TopLine="229"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.message.pas"/>
-        <Caret Line="101" TopLine="89"/>
+        <Caret Line="233" Column="48" TopLine="220"/>
       </Position>
       <Position>
         <Filename Value="pas\connection\agenda.datamodule.pas"/>
-        <Caret Line="27" Column="54" TopLine="17"/>
+        <Caret Line="101" Column="10" TopLine="85"/>
       </Position>
       <Position>
         <Filename Value="pas\connection\agenda.datamodule.pas"/>
-        <Caret Line="90" TopLine="84"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.main.pas"/>
-        <Caret Line="272" Column="16" TopLine="255"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.loading.pas"/>
-        <Caret Line="28" Column="14" TopLine="15"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.loading.pas"/>
-        <Caret Line="29" Column="14" TopLine="15"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\agenda.main.pas"/>
-        <Caret Line="272" Column="14" TopLine="253"/>
+        <Caret Line="99" Column="50" TopLine="85"/>
       </Position>
       <Position>
         <Filename Value="pas\connection\agenda.datamodule.pas"/>
-        <Caret Line="302" Column="6" TopLine="279"/>
+        <Caret Line="281" Column="38" TopLine="274"/>
       </Position>
       <Position>
-        <Filename Value="Agenda.lpr"/>
-        <Caret Line="30" Column="25" TopLine="16"/>
+        <Filename Value="pas\connection\agenda.datamodule.pas"/>
+        <Caret Line="104" Column="3" TopLine="99"/>
       </Position>
       <Position>
-        <Filename Value="pas\view\agenda.login.pas"/>
-        <Caret Line="87" Column="56" TopLine="75"/>
+        <Filename Value="pas\connection\agenda.datamodule.pas"/>
+        <Caret Line="109" Column="9" TopLine="97"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\agenda.datamodule.pas"/>
+        <Caret Line="94" TopLine="87"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\agenda.datamodule.pas"/>
+        <Caret Line="270" Column="15" TopLine="258"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\agenda.datamodule.pas"/>
+        <Caret Line="94" TopLine="82"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\agenda.datamodule.pas"/>
+        <Caret Line="270" TopLine="264"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\agenda.datamodule.pas"/>
+        <Caret Line="60" Column="7" TopLine="49"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\agenda.datamodule.pas"/>
+        <Caret Line="94" Column="9" TopLine="90"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\agenda.datamodule.pas"/>
+        <Caret Line="37" Column="23" TopLine="88"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\view\agenda.main.pas"/>
+        <Caret Line="233" Column="21" TopLine="220"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\view\agenda.main.pas"/>
+        <Caret Line="234" Column="21" TopLine="221"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\view\agenda.main.pas"/>
+        <Caret Line="98" Column="20" TopLine="85"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\view\agenda.main.pas"/>
+        <Caret Line="97" Column="20" TopLine="84"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\view\agenda.main.pas"/>
+        <Caret Line="96" Column="20" TopLine="83"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\agenda.datamodule.pas"/>
+        <Caret Line="263" Column="28" TopLine="254"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\agenda.datamodule.pas"/>
+        <Caret Line="109" Column="8" TopLine="92"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\agenda.datamodule.pas"/>
+        <Caret Line="104" TopLine="92"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\agenda.datamodule.pas"/>
+        <Caret Line="251" Column="30" TopLine="240"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\agenda.datamodule.pas"/>
+        <Caret Line="9" Column="2" TopLine="55"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\agenda.datamodule.pas"/>
+        <Caret Line="109" Column="19" TopLine="99"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\view\agenda.main.pas"/>
+        <Caret Line="215" Column="17" TopLine="218"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\view\agenda.main.pas"/>
+        <Caret Line="222" Column="21" TopLine="217"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\view\agenda.main.pas"/>
+        <Caret Line="228" Column="43" TopLine="219"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\view\agenda.main.pas"/>
+        <Caret Line="277" Column="45" TopLine="262"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\view\agenda.main.pas"/>
+        <Caret Line="299" Column="23" TopLine="285"/>
       </Position>
     </JumpHistory>
     <RunParams>

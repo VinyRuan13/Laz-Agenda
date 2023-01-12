@@ -1,7 +1,7 @@
 object frmLoading: TfrmLoading
-  Left = -454
+  Left = 600
   Height = 141
-  Top = 322
+  Top = 329
   Width = 320
   BorderStyle = bsNone
   Caption = 'frmLoading'

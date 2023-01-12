@@ -5,7 +5,7 @@ unit agenda.datamodule;
 interface
 
 uses
- Classes, SysUtils, dbf, IniFiles, DB, agenda.funcao, agenda.message,
+ Classes, SysUtils, dbf, IniFiles, DB, memds, agenda.funcao, agenda.message,
  agenda.loading;
 
 type
@@ -14,16 +14,20 @@ type
 
  Tdm = class(TDataModule)
   ContatosDBF: TDbf;
+		tableUsuarioTemp: TMemDataset;
   UsuariosDBF: TDbf;
   HistoricoDBF: TDbf;
   SequenciaDBF: TDbf;
   procedure ContatosDBFAfterOpen(DataSet: TDataSet);
+		procedure ContatosDBFBeforeDelete(DataSet: TDataSet);
   procedure ContatosDBFBeforePost(DataSet: TDataSet);
   procedure DataModuleCreate(Sender: TObject);
   procedure HistoricoDBFAfterOpen(DataSet: TDataSet);
 		procedure HistoricoDBFBeforePost(DataSet: TDataSet);
   procedure SequenciaDBFAfterOpen(DataSet: TDataSet);
   procedure UsuariosDBFAfterOpen(DataSet: TDataSet);
+		procedure UsuariosDBFAfterPost(DataSet: TDataSet);
+		procedure UsuariosDBFBeforeDelete(DataSet: TDataSet);
 		procedure UsuariosDBFBeforePost(DataSet: TDataSet);
  private
   SettingsIni : TIniFile;
@@ -32,8 +36,10 @@ type
   procedure definirIndices();
   procedure abrirFecharTabelas(Operacao : String);
   function atualizarSequencia(Tabela : String) : Integer;
+  procedure inserirUserTemp(Temp : TMemDataset ; Real : TDbf);
 
  public
+  txtSenhaAntiga : String;
   txtSenha : String;
   userLogado : String;
   idUserLogado : Integer;
@@ -87,21 +93,58 @@ procedure Tdm.UsuariosDBFAfterOpen(DataSet: TDataSet);
 begin
  //carregar índice
  UsuariosDBF.OpenIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'USUARIOS.NTX');
+ inserirUserTemp(tableUsuarioTemp, UsuariosDBF);
+end;
+
+procedure Tdm.UsuariosDBFAfterPost(DataSet: TDataSet);
+begin
+  inserirUserTemp(tableUsuarioTemp, UsuariosDBF);
+end;
+
+procedure Tdm.UsuariosDBFBeforeDelete(DataSet: TDataSet);
+var
+  excluir : Boolean;
+begin
+  excluir := TfrmMessage.Mensagem('Deseja realmente excluir o usuário '+
+  DataSet.FieldByName('NOME').AsString+' ?', 'Alerta', 'D', [mbNao, mbSim]);
+
+  if not excluir then
+  begin
+    Abort;
+  end;
 end;
 
 procedure Tdm.UsuariosDBFBeforePost(DataSet: TDataSet);
 begin
-  if DataSet.State in [dsInsert] then
+  if tableUsuarioTemp.Locate('nomeUser', DataSet.FieldByName('NOME').AsString, [loCaseInsensitive]) then
   begin
-    DataSet.FieldByName('SENHA').AsString := funcao.encryptMD5(txtSenha);
-    DataSet.FieldByName('DCADASTRO').AsDateTime := Now;
-    DataSet.FieldByName('HCADASTRO').AsString := TimeToStr(Time);
-    DataSet.FieldByName('ID').AsInteger := atualizarSequencia('USUARIOS');
-  end;
-  if DataSet.State in [dsEdit] then
+    TfrmMessage.Mensagem('Não foi possível concluir o cadastro!'+#13+'O Usuário '+
+    DataSet.FieldByName('NOME').AsString+' já existe!', 'Acesso Negado!', 'E', [mbOk]);
+    Abort;
+  end
+  else
   begin
-    DataSet.FieldByName('DALTERACAO').AsDateTime := Now;
-    DataSet.FieldByName('HALTERACAO').AsString := TimeToStr(Time);
+    if DataSet.State in [dsInsert] then
+    begin
+      DataSet.FieldByName('SENHA').AsString := funcao.encryptMD5(txtSenha);
+      DataSet.FieldByName('DCADASTRO').AsDateTime := Now;
+      DataSet.FieldByName('HCADASTRO').AsString := TimeToStr(Time);
+      DataSet.FieldByName('ID').AsInteger := atualizarSequencia('USUARIOS');
+    end;
+    if DataSet.State in [dsEdit] then
+    begin
+      if  funcao.encryptMD5(txtSenhaAntiga) = DataSet.FieldByName('SENHA').AsString then
+      begin
+        DataSet.FieldByName('SENHA').AsString := funcao.encryptMD5(txtSenha);
+        DataSet.FieldByName('DALTERACAO').AsDateTime := Now;
+        DataSet.FieldByName('HALTERACAO').AsString := TimeToStr(Time);
+      end
+      else
+      begin
+        TfrmMessage.Mensagem('Senha atual inválida!', 'Acesso Negado!', 'E', [mbOk]);
+        Abort;
+      end;
+    end;
   end;
 end;
 
@@ -109,6 +152,19 @@ procedure Tdm.ContatosDBFAfterOpen(DataSet: TDataSet);
 begin
  //carregar índice
  ContatosDBF.OpenIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'CONTATOS.NTX');
+end;
+
+procedure Tdm.ContatosDBFBeforeDelete(DataSet: TDataSet);
+var
+  excluir : Boolean;
+begin
+  excluir := TfrmMessage.Mensagem('Deseja realmente excluir o contato '+
+  DataSet.FieldByName('NOME').AsString+' ?', 'Alerta', 'D', [mbNao, mbSim]);
+
+  if not excluir then
+  begin
+    Abort;
+  end;
 end;
 
 procedure Tdm.ContatosDBFBeforePost(DataSet: TDataSet);
@@ -232,6 +288,32 @@ begin
   SequenciaDBF.Post;
 
   Result := SequenciaDBF.FieldByName(campo).AsInteger;
+end;
+
+procedure Tdm.inserirUserTemp(Temp : TMemDataset ; Real : TDbf);
+begin
+
+  Temp.Close;
+  Temp.Fields.Clear;
+  Temp.FieldDefs.Clear;
+  Temp.Clear;
+
+  Temp.FieldDefs.Add('nomeUser', ftString, 100);
+
+  Temp.Open;
+
+  Real.First;
+
+  while not Real.EOF do
+  begin
+    Temp.Insert;
+    Temp.FieldByName('nomeUser').AsString := Real.FieldByName('NOME').AsString;
+    Temp.Post;
+
+    Real.Next;
+  end;
+
+  Real.First;
 end;
 
 procedure Tdm.indexarTodos;

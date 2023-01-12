@@ -1,10 +1,10 @@
 object dm: Tdm
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 113
+  Height = 101
   HorizontalOffset = 462
   VerticalOffset = 208
-  Width = 331
+  Width = 443
   object ContatosDBF: TDbf
     IndexDefs = <    
       item
@@ -16,6 +16,7 @@ object dm: Tdm
     FilterOptions = []
     AfterOpen = ContatosDBFAfterOpen
     BeforePost = ContatosDBFBeforePost
+    BeforeDelete = ContatosDBFBeforeDelete
     Left = 32
     Top = 16
   end
@@ -57,7 +58,21 @@ object dm: Tdm
     FilterOptions = []
     AfterOpen = UsuariosDBFAfterOpen
     BeforePost = UsuariosDBFBeforePost
+    AfterPost = UsuariosDBFAfterPost
+    BeforeDelete = UsuariosDBFBeforeDelete
     Left = 264
+    Top = 16
+  end
+  object tableUsuarioTemp: TMemDataset
+    Active = True
+    FieldDefs = <    
+      item
+        Name = 'nomeUser'
+        Attributes = [faRequired]
+        DataType = ftString
+        Size = 100
+      end>
+    Left = 360
     Top = 16
   end
 end

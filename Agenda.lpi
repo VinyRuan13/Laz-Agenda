@@ -77,12 +77,14 @@
         <Filename Value="pas\view\agenda.message.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmMessage"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
         <Filename Value="pas\view\agenda.loading.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmLoading"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
     </Units>

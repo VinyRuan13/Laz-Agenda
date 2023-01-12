@@ -279,6 +279,7 @@ begin
   pageControl.ActivePage := tbsConfiguracao;
   TfrmMessage.Mensagem('Página em desenvolvimento.'+#13+'Aguarde por novidades... :)',
                                   'Mensagem', 'I', [mbOk]);
+  pageControl.ActivePage := tbsMain;
 end;
 
 procedure TfrmMain.actHistoricoLoginExecute(Sender: TObject);

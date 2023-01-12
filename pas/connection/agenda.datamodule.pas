@@ -112,26 +112,45 @@ begin
   begin
     Abort;
   end;
+
+  if DataSet.FieldByName('ID').AsInteger = idUserLogado then
+  begin
+    TfrmMessage.Mensagem('Não foi possível excluir o usuário '+
+    DataSet.FieldByName('NOME').AsString+'.'+#13+'Usuário está logado no sistema!',
+    'Acesso Negado!', 'E', [mbOk]);
+    Abort;
+  end;
+
 end;
 
 procedure Tdm.UsuariosDBFBeforePost(DataSet: TDataSet);
 begin
-  if tableUsuarioTemp.Locate('nomeUser', DataSet.FieldByName('NOME').AsString, [loCaseInsensitive]) then
+  if DataSet.State in [dsInsert] then
   begin
-    TfrmMessage.Mensagem('Não foi possível concluir o cadastro!'+#13+'O Usuário '+
-    DataSet.FieldByName('NOME').AsString+' já existe!', 'Acesso Negado!', 'E', [mbOk]);
-    Abort;
-  end
-  else
-  begin
-    if DataSet.State in [dsInsert] then
+    if tableUsuarioTemp.Locate('nomeUser', DataSet.FieldByName('NOME').AsString, [loCaseInsensitive]) then
+    begin
+      TfrmMessage.Mensagem('Não foi possível concluir o cadastro!'+#13+'O Usuário '+
+      DataSet.FieldByName('NOME').AsString+' já existe!', 'Acesso Negado!', 'E', [mbOk]);
+      Abort;
+    end
+    else
     begin
       DataSet.FieldByName('SENHA').AsString := funcao.encryptMD5(txtSenha);
       DataSet.FieldByName('DCADASTRO').AsDateTime := Now;
       DataSet.FieldByName('HCADASTRO').AsString := TimeToStr(Time);
       DataSet.FieldByName('ID').AsInteger := atualizarSequencia('USUARIOS');
-    end;
-    if DataSet.State in [dsEdit] then
+				end;
+  end;
+  if DataSet.State in [dsEdit] then
+  begin
+    if (tableUsuarioTemp.Locate('nomeUser', DataSet.FieldByName('NOME').AsString, [loCaseInsensitive])) and
+      (tableUsuarioTemp.FieldByName('idUser').AsInteger <> DataSet.FieldByName('ID').AsInteger) then
+    begin
+      TfrmMessage.Mensagem('Não foi possível concluir o cadastro!'+#13+'O Usuário '+
+      DataSet.FieldByName('NOME').AsString+' já existe!', 'Acesso Negado!', 'E', [mbOk]);
+      Abort;
+    end
+    else
     begin
       if  funcao.encryptMD5(txtSenhaAntiga) = DataSet.FieldByName('SENHA').AsString then
       begin
@@ -144,7 +163,7 @@ begin
         TfrmMessage.Mensagem('Senha atual inválida!', 'Acesso Negado!', 'E', [mbOk]);
         Abort;
       end;
-    end;
+				end;
   end;
 end;
 
@@ -228,7 +247,7 @@ begin
 
   UsuariosDBF.Indexes[0].IndexFile := SettingsIni.ReadString('NTX', 'PATH', '')+'USUARIOS.NTX';
   UsuariosDBF.IndexName := SettingsIni.ReadString('NTX', 'PATH', '')+'USUARIOS.NTX';
-  UsuariosDBF.Indexes[0].SortField := 'ID';
+  UsuariosDBF.Indexes[0].SortField := 'NOME';
 
 end;
 
@@ -298,6 +317,7 @@ begin
   Temp.FieldDefs.Clear;
   Temp.Clear;
 
+  Temp.FieldDefs.Add('idUser', ftInteger, 11);
   Temp.FieldDefs.Add('nomeUser', ftString, 100);
 
   Temp.Open;
@@ -307,6 +327,7 @@ begin
   while not Real.EOF do
   begin
     Temp.Insert;
+    Temp.FieldByName('idUser').AsInteger := Real.FieldByName('ID').AsInteger;
     Temp.FieldByName('nomeUser').AsString := Real.FieldByName('NOME').AsString;
     Temp.Post;
 

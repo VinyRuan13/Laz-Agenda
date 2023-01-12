@@ -67,6 +67,11 @@ object dm: Tdm
     Active = True
     FieldDefs = <    
       item
+        Name = 'idUser'
+        DataType = ftInteger
+        Size = 11
+      end    
+      item
         Name = 'nomeUser'
         Attributes = [faRequired]
         DataType = ftString

@@ -10,7 +10,7 @@
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
       <XPManifest>
-        <DpiAware Value="True"/>
+        <DpiAware Value="True/PM_V2"/>
         <LongPathAware Value="True"/>
         <AnsiUTF8 Value="True"/>
       </XPManifest>
@@ -71,7 +71,7 @@
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <Target>
-      <Filename Value="D:\Projetos\Lazarus\Agenda\msg\exe\debug\msg.exe"/>
+      <Filename Value="D:\Projetos\Lazarus\Agenda\exe\debug\msg.exe"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
@@ -91,7 +91,7 @@
     </Linking>
     <Other>
       <ExecuteAfter>
-        <Command Value="cmd.exe /c COPY /Y D:\Projetos\Lazarus\Agenda\msg\exe\debug\msg.exe D:\Projetos\Lazarus\Agenda\msg\exe\release\msg.exe"/>
+        <Command Value="cmd.exe /c COPY /Y D:\Projetos\Lazarus\Agenda\exe\debug\msg.exe D:\Projetos\Lazarus\Agenda\exe\release\msg.exe"/>
         <CompileReasons Run="False"/>
       </ExecuteAfter>
     </Other>

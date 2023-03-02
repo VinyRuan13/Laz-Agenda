@@ -7,7 +7,7 @@ object frmMain: TfrmMain
   AlphaBlendValue = 240
   BorderIcons = []
   BorderStyle = bsNone
-  Caption = 'frmMain'
+  Caption = 'Aniversariantes do Dia'
   ClientHeight = 423
   ClientWidth = 538
   Color = 15462142

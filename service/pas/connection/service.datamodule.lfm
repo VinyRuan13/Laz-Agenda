@@ -1,0 +1,24 @@
+object dm: Tdm
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 100
+  HorizontalOffset = 283
+  VerticalOffset = 250
+  Width = 191
+  object qryEmail: TDbf
+    IndexDefs = <>
+    TableName = 'ENVIO.DBF'
+    TableLevel = 4
+    FilterOptions = []
+    Left = 24
+    Top = 16
+  end
+  object qryContato: TDbf
+    IndexDefs = <>
+    TableName = 'CONTATOS.DBF'
+    TableLevel = 4
+    FilterOptions = []
+    Left = 96
+    Top = 16
+  end
+end

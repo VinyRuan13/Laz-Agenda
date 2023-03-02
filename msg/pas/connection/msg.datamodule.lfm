@@ -1,0 +1,25 @@
+object dm: Tdm
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
+  OldCreateOrder = False
+  Height = 145
+  HorizontalOffset = 283
+  VerticalOffset = 250
+  Width = 287
+  object qryEnvio: TDbf
+    IndexDefs = <>
+    TableName = 'ENVIO.DBF'
+    TableLevel = 4
+    FilterOptions = []
+    Left = 24
+    Top = 16
+  end
+  object qryContato: TDbf
+    IndexDefs = <>
+    TableName = 'CONTATOS.DBF'
+    TableLevel = 4
+    FilterOptions = []
+    Left = 96
+    Top = 16
+  end
+end

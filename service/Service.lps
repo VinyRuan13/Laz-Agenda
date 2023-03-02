@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="Service.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="76"/>
+        <CursorPos X="33" Y="98"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="pas\connection\service.datamodule.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="dm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="1"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\Componentes\Lazarus\packages\Indy10\Protocols\IdSSLOpenSSL.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3192"/>
+        <CursorPos Y="3203"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="29">
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="163" TopLine="152"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="170" TopLine="152"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="171" TopLine="153"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="172" TopLine="154"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="165" Column="12" TopLine="156"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="91" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="92" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="93" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="96" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="97" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="103" TopLine="93"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="104" TopLine="93"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="105" TopLine="93"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="111" TopLine="93"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="112" TopLine="94"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="113" TopLine="95"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="114" TopLine="96"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="121" TopLine="110"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="122" TopLine="110"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="123" TopLine="110"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="127" TopLine="110"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="136" TopLine="125"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="141" TopLine="125"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="142" TopLine="125"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="152" TopLine="141"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="157" TopLine="141"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="163" TopLine="152"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="170" TopLine="152"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="171" TopLine="153"/>
+      </Position>
+      <Position>
+        <Filename Value="Service.lpr"/>
+        <Caret Line="172" TopLine="154"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

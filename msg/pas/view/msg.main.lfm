@@ -3,40 +3,40 @@ object frmMain: TfrmMain
   Height = 423
   Top = 250
   Width = 538
-  AlphaBlend = True
-  AlphaBlendValue = 240
+  AlphaBlendValue = 220
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'Aniversariantes do Dia'
   ClientHeight = 423
   ClientWidth = 538
-  Color = 15462142
+  Color = 16688549
   DefaultMonitor = dmPrimary
+  FormStyle = fsStayOnTop
   OnKeyPress = FormKeyPress
-  OnShow = FormShow
   Position = poScreenCenter
   object pnlMain: TPanel
-    Left = 0
-    Height = 423
-    Top = 0
-    Width = 538
+    Left = 10
+    Height = 403
+    Top = 10
+    Width = 518
     Align = alClient
-    ClientHeight = 423
-    ClientWidth = 538
-    Color = 15462142
+    BorderSpacing.Around = 10
+    BevelOuter = bvNone
+    ClientHeight = 403
+    ClientWidth = 518
+    Color = clWhite
     ParentColor = False
     TabOrder = 0
     object pnlTitulo: TPanel
-      Left = 1
+      Left = 0
       Height = 31
-      Top = 1
-      Width = 536
+      Top = 0
+      Width = 518
       Align = alTop
       BevelOuter = bvNone
       Caption = 'Aniversáriantes do Dia'
       ClientHeight = 31
-      ClientWidth = 536
-      Color = 15462142
+      ClientWidth = 518
       Font.CharSet = ANSI_CHARSET
       Font.Color = clGreen
       Font.Height = -19
@@ -44,12 +44,11 @@ object frmMain: TfrmMain
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       Font.Style = [fsBold]
-      ParentColor = False
       ParentFont = False
       TabOrder = 0
       object btnSair: TSpeedButton
         Cursor = crHandPoint
-        Left = 496
+        Left = 478
         Height = 31
         Hint = 'Fechar (Esc)'
         Top = 0
@@ -70,14 +69,14 @@ object frmMain: TfrmMain
         ParentShowHint = False
       end
     end
-    object DBGrid1: TDBGrid
+    object grdAniver: TDBGrid
       Cursor = crHandPoint
-      Left = 11
-      Height = 230
-      Top = 192
-      Width = 516
+      Left = 10
+      Height = 212
+      Top = 191
+      Width = 498
       Align = alClient
-      AlternateColor = clWhite
+      AlternateColor = 15462142
       BorderSpacing.Left = 10
       BorderSpacing.Right = 10
       BorderStyle = bsNone
@@ -103,7 +102,7 @@ object frmMain: TfrmMain
           Title.Font.Quality = fqDraft
           Title.Font.Style = [fsBold]
           Title.Caption = 'Aniversáriante'
-          Width = 358
+          Width = 356
           FieldName = 'PESSOA'
         end      
         item
@@ -124,18 +123,18 @@ object frmMain: TfrmMain
       Font.Height = -13
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
-      Options = [dgTitles, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgCancelOnExit]
+      Options = [dgTitles, dgRowSelect, dgAlwaysShowSelection]
       ParentColor = True
       ParentFont = False
-      Scrollbars = ssVertical
+      Scrollbars = ssNone
       TabOrder = 1
       TitleStyle = tsNative
     end
     object img: TImage
-      Left = 1
+      Left = 0
       Height = 160
-      Top = 32
-      Width = 536
+      Top = 31
+      Width = 518
       Align = alTop
       Picture.Data = {
         0954474946496D6167651A3C00004749463839611002B100F76A000000000052
@@ -625,36 +624,8 @@ object frmMain: TfrmMain
     end
   end
   object dtsAniver: TDataSource
-    DataSet = memDtsAniver
-    Left = 240
+    DataSet = dm.memDtsAniver
+    Left = 280
     Top = 256
-  end
-  object dtsContatos: TDataSource
-    DataSet = dm.qryContato
-    Left = 40
-    Top = 232
-  end
-  object memDtsAniver: TMemDataset
-    FieldDefs = <    
-      item
-        Name = 'DATA'
-        Attributes = [faRequired]
-        DataType = ftString
-        Size = 5
-      end    
-      item
-        Name = 'PESSOA'
-        Attributes = [faRequired]
-        DataType = ftString
-        Size = 100
-      end    
-      item
-        Name = 'IDADE'
-        Attributes = [faRequired]
-        DataType = ftInteger
-        Size = 3
-      end>
-    Left = 352
-    Top = 264
   end
 end

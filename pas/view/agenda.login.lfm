@@ -12,7 +12,6 @@ object frmLogin: TfrmLogin
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.4.0'
   object pnlLogin: TPanel
     Left = 0
     Height = 307

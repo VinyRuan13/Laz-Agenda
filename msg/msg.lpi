@@ -28,6 +28,9 @@
     </RunParams>
     <RequiredPackages>
       <Item>
+        <PackageName Value="DBFLaz"/>
+      </Item>
+      <Item>
         <PackageName Value="SDFLaz"/>
       </Item>
       <Item>
@@ -65,6 +68,17 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit>
+      <Unit>
+        <Filename Value="pas\view\msg.message.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmMessage"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="pas\class\msg.funcao.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -75,7 +89,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="pas\view;pas\connection"/>
+      <OtherUnitFiles Value="pas\view;pas\connection;pas\class"/>
       <UnitOutputDirectory Value="D:\Projetos\Lazarus\Agenda\msg\compile"/>
     </SearchPaths>
     <Linking>

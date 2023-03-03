@@ -1,4 +1,4 @@
-unit agenda.funcao;
+unit msg.funcao;
 
 interface
 
@@ -36,8 +36,8 @@ implementation
 procedure TFuncao.setarInfoVersao();
 begin
   //''versão compilada!''.
-  dataVersao := '02/03/2023 ';
-  versao := '23.02.03.04_01 ';
+  dataVersao := '12/01/2023 ';
+  versao := '23.01.12.03_01 ';
   dev := 'Vinícius Ruan Brandalize';
 end;
 

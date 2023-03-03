@@ -1,5 +1,5 @@
 object frmMain: TfrmMain
-  Left = -948
+  Left = 0
   Height = 510
   Top = 122
   Width = 825
@@ -13,7 +13,6 @@ object frmMain: TfrmMain
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.4.0'
   object pnlPrincipal: TPanel
     Left = 0
     Height = 510
@@ -426,9 +425,9 @@ object frmMain: TfrmMain
         Height = 451
         Top = 0
         Width = 633
-        ActivePage = tbsConfiguracao
+        ActivePage = tbsHistoricoLogin
         Align = alClient
-        TabIndex = 4
+        TabIndex = 1
         TabOrder = 0
         object tbsContatos: TTabSheet
           Caption = 'tbsContatos'

@@ -10,17 +10,42 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, memdslaz, sdflaz, zcomponent, msg.main, msg.datamodule
+  Forms, memdslaz, sdflaz, zcomponent, SysUtils, msg.main, msg.message, msg.datamodule,
+  msg.funcao
   { you can add units after this };
 
 {$R *.res}
-
 begin
   RequireDerivedFormResource:=True;
   Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(Tdm, dm);
-  Application.CreateForm(TfrmMain, frmMain);
-  Application.Run;
+
+  //gravar log
+  dm.HistoricoDBF.Insert;
+  dm.HistoricoDBF.FieldByName('DATA').AsDateTime := Now;
+  dm.HistoricoDBF.FieldByName('HORA').AsString := TimeToStr(Time);
+  dm.HistoricoDBF.FieldByName('MAQUINA').AsString := TFuncao.Create.retornarPc();
+  dm.HistoricoDBF.FieldByName('IP').AsString := TFuncao.Create.retornaIP();
+  dm.HistoricoDBF.FieldByName('ID_USUARIO').AsInteger := 0;
+  dm.HistoricoDBF.FieldByName('USUARIO').AsString := 'PROCESSO AUTOMATICO';
+  dm.HistoricoDBF.FieldByName('PROCESSO').AsString := 'MSG.EXE';
+  dm.HistoricoDBF.Post;
+
+  //verifica se tem aniversariantes
+  if dm.aniversario then
+  begin
+    TfrmMessage.Mensagem('Ebaaaaa... '+#13+'Hoje é dia de comemorar...'+#13+
+      'Veja quem faz aniversário hoje!', 'Aviso Importante', 'C', [mbOk]);
+    Application.CreateForm(TfrmMain, frmMain);
+    Application.Run;
+  end
+  else
+  begin
+    TfrmMessage.Mensagem('Sem novidades por aqui...'+#13+
+      'Sem aniversáriantes para a data de hoje!', 'Aviso Importante', 'C', [mbOk]);
+    Application.Terminate;
+  end;
+
 end.
 

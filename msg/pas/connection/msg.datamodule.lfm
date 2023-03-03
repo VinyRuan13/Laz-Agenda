@@ -5,8 +5,8 @@ object dm: Tdm
   Height = 145
   HorizontalOffset = 283
   VerticalOffset = 250
-  Width = 287
-  object qryEnvio: TDbf
+  Width = 289
+  object EnvioDBF: TDbf
     IndexDefs = <>
     TableName = 'ENVIO.DBF'
     TableLevel = 4
@@ -14,12 +14,61 @@ object dm: Tdm
     Left = 24
     Top = 16
   end
-  object qryContato: TDbf
+  object ContatosDBF: TDbf
     IndexDefs = <>
     TableName = 'CONTATOS.DBF'
     TableLevel = 4
     FilterOptions = []
     Left = 96
     Top = 16
+  end
+  object memDtsAniver: TMemDataset
+    FieldDefs = <    
+      item
+        Name = 'DATA'
+        Attributes = [faRequired]
+        DataType = ftString
+        Size = 5
+      end    
+      item
+        Name = 'PESSOA'
+        Attributes = [faRequired]
+        DataType = ftString
+        Size = 100
+      end    
+      item
+        Name = 'IDADE'
+        Attributes = [faRequired]
+        DataType = ftInteger
+        Size = 3
+      end>
+    Left = 184
+    Top = 16
+  end
+  object CGeralDBF: TDbf
+    IndexDefs = <>
+    TableName = 'CGERAL.DBF'
+    TableLevel = 4
+    FilterOptions = []
+    Left = 24
+    Top = 80
+  end
+  object HistoricoDBF: TDbf
+    IndexDefs = <>
+    TableName = 'HISTORICO.DBF'
+    TableLevel = 4
+    FilterOptions = []
+    BeforePost = HistoricoDBFBeforePost
+    Left = 96
+    Top = 80
+  end
+  object SequenciaDBF: TDbf
+    IndexDefs = <>
+    TableName = 'SEQUENCIA.DBF'
+    TableLevel = 4
+    FilterOptions = []
+    BeforePost = HistoricoDBFBeforePost
+    Left = 176
+    Top = 80
   end
 end

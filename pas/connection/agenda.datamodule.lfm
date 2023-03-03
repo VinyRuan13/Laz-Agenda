@@ -41,6 +41,8 @@ object dm: Tdm
     OpenMode = omAutoCreate
     TableName = 'HISTORICO.DBF'
     TableLevel = 4
+    Filter = 'PROCESSO = ''AGENDA.EXE'''
+    Filtered = True
     FilterOptions = []
     AfterOpen = HistoricoDBFAfterOpen
     BeforePost = HistoricoDBFBeforePost

@@ -61,6 +61,7 @@ begin
   dtsHistorico.DataSet.FieldByName('IP').AsString := funcao.retornaIP();
   dtsHistorico.DataSet.FieldByName('ID_USUARIO').AsInteger := id;
   dtsHistorico.DataSet.FieldByName('USUARIO').AsString := user;
+  dtsHistorico.DataSet.FieldByName('PROCESSO').AsString := 'AGENDA.EXE';
   dtsHistorico.DataSet.Post;
 end;
 

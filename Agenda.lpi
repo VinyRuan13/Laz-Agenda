@@ -28,6 +28,9 @@
     </RunParams>
     <RequiredPackages>
       <Item>
+        <PackageName Value="ACBrDiversos"/>
+      </Item>
+      <Item>
         <PackageName Value="rxnew"/>
       </Item>
       <Item>

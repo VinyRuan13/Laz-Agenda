@@ -14,21 +14,27 @@ type
 
  Tdm = class(TDataModule)
   ContatosDBF: TDbf;
-		tableUsuarioTemp: TMemDataset;
+  EnvioDBF: TDbf;
+  CGeralDBF: TDbf;
+  tableUsuarioTemp: TMemDataset;
   UsuariosDBF: TDbf;
   HistoricoDBF: TDbf;
   SequenciaDBF: TDbf;
+  procedure CGeralDBFAfterOpen(DataSet: TDataSet);
+  procedure CGeralDBFBeforePost(DataSet: TDataSet);
   procedure ContatosDBFAfterOpen(DataSet: TDataSet);
-		procedure ContatosDBFBeforeDelete(DataSet: TDataSet);
+  procedure ContatosDBFBeforeDelete(DataSet: TDataSet);
   procedure ContatosDBFBeforePost(DataSet: TDataSet);
   procedure DataModuleCreate(Sender: TObject);
+  procedure EnvioDBFAfterOpen(DataSet: TDataSet);
+  procedure EnvioDBFBeforePost(DataSet: TDataSet);
   procedure HistoricoDBFAfterOpen(DataSet: TDataSet);
-		procedure HistoricoDBFBeforePost(DataSet: TDataSet);
+  procedure HistoricoDBFBeforePost(DataSet: TDataSet);
   procedure SequenciaDBFAfterOpen(DataSet: TDataSet);
   procedure UsuariosDBFAfterOpen(DataSet: TDataSet);
-		procedure UsuariosDBFAfterPost(DataSet: TDataSet);
-		procedure UsuariosDBFBeforeDelete(DataSet: TDataSet);
-		procedure UsuariosDBFBeforePost(DataSet: TDataSet);
+  procedure UsuariosDBFAfterPost(DataSet: TDataSet);
+  procedure UsuariosDBFBeforeDelete(DataSet: TDataSet);
+  procedure UsuariosDBFBeforePost(DataSet: TDataSet);
  private
   SettingsIni : TIniFile;
   procedure definirLocalDBFs();
@@ -67,6 +73,20 @@ begin
  begin
    funcao := TFuncao.Create;
  end;
+end;
+
+procedure Tdm.EnvioDBFAfterOpen(DataSet: TDataSet);
+begin
+  //carregar índice
+  EnvioDBF.OpenIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'ENVIO.NTX');
+end;
+
+procedure Tdm.EnvioDBFBeforePost(DataSet: TDataSet);
+begin
+ DataSet.FieldByName('DALTERACAO').AsDateTime := Now;
+ DataSet.FieldByName('HALTERACAO').AsString := TimeToStr(Now);
+ DataSet.FieldByName('IDUSUARIO').AsInteger := idUserLogado;
+ DataSet.FieldByName('USUARIO').AsString := userLogado;
 end;
 
 procedure Tdm.HistoricoDBFAfterOpen(DataSet: TDataSet);
@@ -170,7 +190,21 @@ end;
 procedure Tdm.ContatosDBFAfterOpen(DataSet: TDataSet);
 begin
  //carregar índice
- ContatosDBF.OpenIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'CONTATOS.NTX');
+ ContatosDBF.OpenIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'CONTATOS.NTX')
+end;
+
+procedure Tdm.CGeralDBFAfterOpen(DataSet: TDataSet);
+begin
+  //Carregar índice
+  CGeralDBF.OpenIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'CGERAL.NTX');
+end;
+
+procedure Tdm.CGeralDBFBeforePost(DataSet: TDataSet);
+begin
+  DataSet.FieldByName('DALTERACAO').AsDateTime := Now;
+  DataSet.FieldByName('HALTERACAO').AsString := TimeToStr(Now);
+  DataSet.FieldByName('IDUSUARIO').AsInteger := idUserLogado;
+  DataSet.FieldByName('USUARIO').AsString := userLogado;
 end;
 
 procedure Tdm.ContatosDBFBeforeDelete(DataSet: TDataSet);
@@ -205,10 +239,12 @@ end;
 
 procedure Tdm.definirLocalDBFs;
 begin
- ContatosDBF.FilePathFull := SettingsIni.ReadString('DBF', 'PATH', '');
+ ContatosDBF.FilePathFull :=  SettingsIni.ReadString('DBF', 'PATH', '');
  HistoricoDBF.FilePathFull := SettingsIni.ReadString('DBF', 'PATH', '');
  SequenciaDBF.FilePathFull := SettingsIni.ReadString('DBF', 'PATH', '');
- UsuariosDBF.FilePathFull := SettingsIni.ReadString('DBF', 'PATH', '');
+ UsuariosDBF.FilePathFull :=  SettingsIni.ReadString('DBF', 'PATH', '');
+ EnvioDBF.FilePathFull    :=  SettingsIni.ReadString('DBF', 'PATH', '');
+ CGeralDBF.FilePathFull   :=  SettingsIni.ReadString('DBF', 'PATH', '');
 end;
 
 procedure Tdm.criarArquivoIni;
@@ -249,6 +285,14 @@ begin
   UsuariosDBF.IndexName := SettingsIni.ReadString('NTX', 'PATH', '')+'USUARIOS.NTX';
   UsuariosDBF.Indexes[0].SortField := 'NOME';
 
+  EnvioDBF.Indexes[0].IndexFile := SettingsIni.ReadString('NTX', 'PATH', '')+'ENVIO.NTX';
+  EnvioDBF.IndexName := SettingsIni.ReadString('NTX', 'PATH', '')+'ENVIO.NTX';
+  EnvioDBF.Indexes[0].SortField := 'ID';
+
+  CGeralDBF.Indexes[0].IndexFile := SettingsIni.ReadString('NTX', 'PATH', '')+'CGERAL.NTX';
+  CGeralDBF.IndexName := SettingsIni.ReadString('NTX', 'PATH', '')+'CGERAL.NTX';
+  CGeralDBF.Indexes[0].SortField := 'ID';
+
 end;
 
 procedure Tdm.abrirFecharTabelas(Operacao: String);
@@ -259,6 +303,8 @@ begin
     HistoricoDBF.Open;
     UsuariosDBF.Open;
     SequenciaDBF.Open;
+    EnvioDBF.Open;
+    CGeralDBF.Open;
   end;
   if Operacao = 'FECHAR' then
   begin
@@ -266,6 +312,8 @@ begin
     HistoricoDBF.Close;
     UsuariosDBF.Close;
     SequenciaDBF.Close;
+    EnvioDBF.Close;
+    CGeralDBF.Close;
   end;
 end;
 
@@ -352,6 +400,8 @@ begin
       SequenciaDBF.OpenIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'SEQUENCIA.NTX');
       ContatosDBF.OpenIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'CONTATOS.NTX');
       HistoricoDBF.OpenIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'HISTORICO.NTX');
+      EnvioDBF.OpenIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'ENVIO.NTX');
+      CGeralDBF.OpenIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'CGERAL.NTX');
 
       TfrmMessage.Mensagem('A indexação foi realizada com sucesso!',
                         'Sucesso!', 'I', [mbOk]);
@@ -379,6 +429,8 @@ begin
   SequenciaDBF.CloseIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'SEQUENCIA.NTX');
   ContatosDBF.CloseIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'CONTATOS.NTX');
   HistoricoDBF.CloseIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'HISTORICO.NTX');
+  EnvioDBF.CloseIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'ENVIO.NTX');
+  CGeralDBF.CloseIndexFile(SettingsIni.ReadString('NTX', 'PATH', '')+'CGERAL.NTX');
 end;
 
 end.

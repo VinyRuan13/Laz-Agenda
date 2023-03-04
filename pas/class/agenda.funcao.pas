@@ -36,8 +36,8 @@ implementation
 procedure TFuncao.setarInfoVersao();
 begin
   //''versão compilada!''.
-  dataVersao := '02/03/2023 ';
-  versao := '23.02.03.04_01 ';
+  dataVersao := '04/03/2023 ';
+  versao := '23.05.01 '; //ano.qtdversaoTotal.versaoDia
   dev := 'Vinícius Ruan Brandalize';
 end;
 
@@ -180,16 +180,17 @@ begin
     FindFirst(caminho+'*.NTX', faAnyFile, SearchRec);
 
     repeat
+
     if DeleteFile(caminho+SearchRec.Name) then
     begin
       apagado := True;
-				end
+    end
     else
     begin
       apagado := False;
       Break;
-				end;
-				until FindNext(SearchRec) <> 0;
+    end;
+    until FindNext(SearchRec) <> 0;
 
     semErros := True;
 

@@ -7,9 +7,7 @@ object frmLoading: TfrmLoading
   Caption = 'frmLoading'
   ClientHeight = 141
   ClientWidth = 320
-  OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.4.0'
   object pnlPrincipal: TPanel
     Left = 0
     Height = 141

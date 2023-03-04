@@ -18,10 +18,10 @@ uses
 
 begin
  RequireDerivedFormResource:=True;
-	Application.Scaled:=True;
+ Application.Scaled:=True;
  Application.Initialize;
-	Application.CreateForm(Tdm, dm);
-	Application.CreateForm(TfrmMain, frmMain);
+ Application.CreateForm(Tdm, dm);
+ Application.CreateForm(TfrmMain, frmMain);
  frmLogin := TfrmLogin.Create(nil);
 
  if frmLogin.ShowModal = mrOK then

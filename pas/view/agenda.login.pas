@@ -28,6 +28,8 @@ type
 			procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
    procedure FormCreate(Sender: TObject);
    procedure FormShow(Sender: TObject);
+   procedure lblEdtSenhaKeyPress(Sender: TObject; var Key: char);
+   procedure lblEdtUsuarioKeyPress(Sender: TObject; var Key: char);
    procedure sbtnEntrarClick(Sender: TObject);
    procedure sbtnSairClick(Sender: TObject);
  private
@@ -94,6 +96,28 @@ procedure TfrmLogin.FormShow(Sender: TObject);
 begin
   dtsLogin.DataSet.Open;
   dtsHistorico.DataSet.Open;
+end;
+
+procedure TfrmLogin.lblEdtSenhaKeyPress(Sender: TObject; var Key: char);
+begin
+
+  if key = #13 then
+    sbtnEntrar.OnClick(nil);
+
+  if Key = #27 then
+     lblEdtUsuario.SetFocus;
+
+end;
+
+procedure TfrmLogin.lblEdtUsuarioKeyPress(Sender: TObject; var Key: char);
+begin
+
+  if key = #13 then
+    lblEdtSenha.SetFocus;
+
+  if Key = #27 then
+     sbtnSair.OnClick(Nil);
+
 end;
 
 procedure TfrmLogin.FormCreate(Sender: TObject);

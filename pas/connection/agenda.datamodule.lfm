@@ -1,7 +1,7 @@
 object dm: Tdm
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 101
+  Height = 137
   HorizontalOffset = 462
   VerticalOffset = 208
   Width = 443
@@ -81,5 +81,33 @@ object dm: Tdm
       end>
     Left = 360
     Top = 16
+  end
+  object EnvioDBF: TDbf
+    IndexDefs = <    
+      item
+        Options = [ixCaseInsensitive]
+      end>
+    OpenMode = omAutoCreate
+    TableName = 'ENVIO.DBF'
+    TableLevel = 4
+    FilterOptions = []
+    AfterOpen = EnvioDBFAfterOpen
+    BeforePost = EnvioDBFBeforePost
+    Left = 32
+    Top = 72
+  end
+  object CGeralDBF: TDbf
+    IndexDefs = <    
+      item
+        Options = [ixCaseInsensitive]
+      end>
+    OpenMode = omAutoCreate
+    TableName = 'CGERAL.DBF'
+    TableLevel = 4
+    FilterOptions = []
+    AfterOpen = CGeralDBFAfterOpen
+    BeforePost = CGeralDBFBeforePost
+    Left = 104
+    Top = 72
   end
 end

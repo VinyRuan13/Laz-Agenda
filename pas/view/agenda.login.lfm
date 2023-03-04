@@ -871,6 +871,7 @@ object frmLogin: TfrmLogin
         MaxLength = 20
         ParentFont = False
         TabOrder = 0
+        OnKeyPress = lblEdtUsuarioKeyPress
       end
       object lblEdtSenha: TLabeledEdit
         Left = 24
@@ -897,6 +898,7 @@ object frmLogin: TfrmLogin
         ParentFont = False
         PasswordChar = '*'
         TabOrder = 1
+        OnKeyPress = lblEdtSenhaKeyPress
       end
       object pnlVersao: TPanel
         Left = 0
@@ -924,7 +926,7 @@ object frmLogin: TfrmLogin
   end
   object dtsHistorico: TDataSource
     DataSet = dm.HistoricoDBF
-    Left = 176
+    Left = 160
     Top = 144
   end
 end

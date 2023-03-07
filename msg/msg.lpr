@@ -10,12 +10,13 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, memdslaz, sdflaz, zcomponent, SysUtils, msg.main, msg.message, msg.datamodule,
+  Forms, memdslaz, sdflaz, SysUtils, msg.main, msg.message, msg.datamodule,
   msg.funcao
   { you can add units after this };
 
 {$R *.res}
 begin
+
   RequireDerivedFormResource:=True;
   Application.Scaled:=True;
   Application.Initialize;
@@ -35,17 +36,21 @@ begin
   //verifica se tem aniversariantes
   if dm.aniversario then
   begin
-    TfrmMessage.Mensagem('Ebaaaaa... '+#13+'Hoje é dia de comemorar...'+#13+
-      'Veja quem faz aniversário hoje!', 'Aviso Importante', 'C', [mbOk]);
+    if (dm.modo = 3) or (dm.modo = 1) then
+    begin
+      TfrmMessage.Mensagem('Ebaaaaa... '+#13+'Hoje é dia de comemorar...'+#13+
+        'Veja quem faz aniversário hoje!', 'Aviso Importante', 'C', [mbOk], dm.tema);
+    end;
     Application.CreateForm(TfrmMain, frmMain);
     Application.Run;
   end
   else
   begin
-    TfrmMessage.Mensagem('Sem novidades por aqui...'+#13+
-      'Sem aniversáriantes para a data de hoje!', 'Aviso Importante', 'C', [mbOk]);
+    if (dm.modo = 3) or (dm.modo = 2) then
+    begin
+      TfrmMessage.Mensagem('Sem novidades por aqui...'+#13+
+        'Sem aniversáriantes para a data de hoje!', 'Aviso Importante', 'C', [mbOk], dm.tema);
+    end;
     Application.Terminate;
   end;
-
 end.
-

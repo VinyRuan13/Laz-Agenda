@@ -7,6 +7,7 @@ object frmMessage: TfrmMessage
   Caption = 'Mensagem'
   ClientHeight = 140
   ClientWidth = 350
+  Color = clWhite
   Position = poScreenCenter
   object pnlIcones: TPanel
     Left = 0
@@ -17,8 +18,6 @@ object frmMessage: TfrmMessage
     BevelOuter = bvNone
     ClientHeight = 100
     ClientWidth = 70
-    Color = clWhite
-    ParentColor = False
     TabOrder = 0
     object imgDeletar: TImage
       Left = 0
@@ -3606,8 +3605,6 @@ object frmMessage: TfrmMessage
     BorderWidth = 10
     ClientHeight = 100
     ClientWidth = 280
-    Color = clWhite
-    ParentColor = False
     TabOrder = 1
     object lblMensagem: TLabel
       Left = 10
@@ -3616,12 +3613,13 @@ object frmMessage: TfrmMessage
       Width = 260
       Align = alClient
       Caption = 'lblMensagem'
+      Color = clWhite
       Font.CharSet = ANSI_CHARSET
       Font.Height = -13
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
-      ParentColor = False
       ParentFont = False
+      Transparent = False
       WordWrap = True
     end
   end
@@ -3634,8 +3632,6 @@ object frmMessage: TfrmMessage
     BevelOuter = bvLowered
     ClientHeight = 40
     ClientWidth = 350
-    Color = clWhite
-    ParentColor = False
     TabOrder = 2
     object btnSim: TBitBtn
       Left = 184

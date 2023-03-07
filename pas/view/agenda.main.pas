@@ -7,7 +7,7 @@ interface
 uses
  Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, ExtCtrls, ActnList,
 	Buttons, ComCtrls, DBGrids, DBCtrls, StdCtrls, DBDateTimePicker,
-	agenda.funcao, agenda.datamodule, agenda.message, LCLType, rxdbcomb,
+	agenda.funcao, agenda.datamodule, agenda.message, LCLType,
         agenda.loading;
 
 type
@@ -30,6 +30,8 @@ type
   dbeRemetente3: TDBEdit;
   dbeRemetente4: TDBEdit;
   dbmMsg: TDBMemo;
+  dbrgEmailCadastro: TDBRadioGroup;
+  dbrgEmailPadrao: TDBRadioGroup;
   dbrgTema: TDBRadioGroup;
   dtsCGeral: TDataSource;
   dtsEnvio: TDataSource;

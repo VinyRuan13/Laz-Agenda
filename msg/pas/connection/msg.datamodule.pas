@@ -137,7 +137,7 @@ begin
     salvo := True;
 
   except on ex:Exception do
-    TfrmMessage.Mensagem('Ocorreu o seguinte erro : '+ex.Message, 'Erro', 'E', [mbOk]);
+    TfrmMessage.Mensagem('Ocorreu o seguinte erro : '+ex.Message, 'Erro', 'E', [mbOk], tema);
   end;
 
   Result := salvo;
@@ -153,7 +153,7 @@ begin
     tema := CGeralDBF.FieldByName('TEMAMSG').AsInteger;
 
   except on ex:Exception do
-    TfrmMessage.Mensagem('Ocorreu o seguinte erro : '+ex.Message, 'Erro', 'E', [mbOk]);
+    TfrmMessage.Mensagem('Ocorreu o seguinte erro : '+ex.Message, 'Erro', 'E', [mbOk], tema);
   end;
 end;
 

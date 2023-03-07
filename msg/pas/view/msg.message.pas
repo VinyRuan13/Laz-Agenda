@@ -32,7 +32,7 @@ type
   private
 
   public
-    class function Mensagem(Texto, Titulo: String; Tipo: Char; Botoes: array of TMyButtons): Boolean;
+    class function Mensagem(Texto, Titulo: String; Tipo: Char; Botoes: array of TMyButtons; Estilo: Integer): Boolean;
   end;
 
 var
@@ -48,12 +48,46 @@ implementation
 { TfrmMessage }
 
 class function TfrmMessage.Mensagem(Texto, Titulo: String; Tipo: Char;
-		Botoes: array of TMyButtons): Boolean;
+		Botoes: array of TMyButtons; Estilo: Integer): Boolean;
 var
   i : Integer;
   frm : TfrmMessage;
 begin
+
   frm := TfrmMessage.Create(nil);
+
+  if (Estilo = 1) and (Estilo = 2) then
+  begin
+    frm.Color := clWhite;
+  end;
+  if Estilo = 3 then
+  begin
+    frm.Color := $004F4F2F;
+    frm.lblMensagem.Color := $004F4F2F;
+    frm.lblMensagem.Font.Color := clWhite;
+    frm.pnlBotoes.BevelOuter := bvNone;
+  end;
+  if Estilo = 4 then
+  begin
+    frm.Color := $0098FB98;
+    frm.lblMensagem.Color := $0098FB98;
+    frm.lblMensagem.Font.Color := clBlack;
+    frm.pnlBotoes.BevelOuter := bvNone;
+  end;
+  if Estilo = 5 then
+  begin
+    frm.Color := $00E6D8AD;
+    frm.lblMensagem.Color := $00E6D8AD;
+    frm.lblMensagem.Font.Color := clBlue;
+    frm.pnlBotoes.BevelOuter := bvNone;
+  end;
+  if Estilo = 6 then
+  begin
+    frm.Color := $00D5D7FF;
+    frm.lblMensagem.Color := $00D5D7FF;
+    frm.lblMensagem.Font.Color := clRed;
+    frm.pnlBotoes.BevelOuter := bvNone;
+  end;
 
   try
     frm.lblMensagem.Caption := Texto;
@@ -102,7 +136,8 @@ begin
     else
       result := False;
     end;
-		finally
+
+  finally
     if (frm <> nil) then
       FreeAndNil(frm);
     end;

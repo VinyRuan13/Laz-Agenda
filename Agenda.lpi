@@ -28,12 +28,6 @@
     </RunParams>
     <RequiredPackages>
       <Item>
-        <PackageName Value="ACBrDiversos"/>
-      </Item>
-      <Item>
-        <PackageName Value="rxnew"/>
-      </Item>
-      <Item>
         <PackageName Value="FCL"/>
       </Item>
       <Item>

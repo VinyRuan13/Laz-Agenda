@@ -8,10 +8,9 @@
       <Unit>
         <Filename Value="msg.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="30"/>
-        <CursorPos X="28" Y="47"/>
-        <UsageCount Value="35"/>
+        <TopLine Value="34"/>
+        <CursorPos X="47" Y="44"/>
+        <UsageCount Value="44"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -20,10 +19,10 @@
         <ComponentName Value="frmMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="25"/>
-        <CursorPos X="50" Y="39"/>
-        <UsageCount Value="35"/>
+        <CursorPos X="15"/>
+        <UsageCount Value="44"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -34,8 +33,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="2"/>
-        <CursorPos X="28" Y="76"/>
-        <UsageCount Value="35"/>
+        <CursorPos X="80" Y="140"/>
+        <UsageCount Value="44"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -46,86 +45,18 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="20" Y="8"/>
-        <UsageCount Value="28"/>
+        <CursorPos X="40" Y="89"/>
+        <UsageCount Value="37"/>
       </Unit>
       <Unit>
         <Filename Value="pas\class\msg.funcao.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="38" Y="41"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="32"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="pas\view\msg.main.pas"/>
-        <Caret Line="47" Column="3" TopLine="32"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\msg.main.pas"/>
-        <Caret Line="51" Column="34" TopLine="33"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\msg.main.pas"/>
-        <Caret Line="50" Column="34" TopLine="32"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\connection\msg.datamodule.pas"/>
-        <Caret Line="3" Column="20"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\connection\msg.datamodule.pas"/>
-        <Caret Line="24" Column="26" TopLine="10"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\connection\msg.datamodule.pas"/>
-        <Caret Line="66" Column="28" TopLine="30"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\connection\msg.datamodule.pas"/>
-        <Caret Line="151" Column="6" TopLine="127"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\connection\msg.datamodule.pas"/>
-        <Caret Line="27" Column="23" TopLine="10"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\connection\msg.datamodule.pas"/>
-        <Caret Line="192" Column="55" TopLine="153"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\connection\msg.datamodule.pas"/>
-        <Caret Line="193" Column="55"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\view\msg.main.pas"/>
-        <Caret Line="39" Column="50" TopLine="27"/>
-      </Position>
-      <Position>
-        <Filename Value="msg.lpr"/>
-        <Caret Line="13" Column="48" TopLine="10"/>
-      </Position>
-      <Position>
-        <Filename Value="msg.lpr"/>
-        <Caret Line="25" Column="28" TopLine="10"/>
-      </Position>
-      <Position>
-        <Filename Value="msg.lpr"/>
-        <Caret Line="26" Column="28" TopLine="10"/>
-      </Position>
-      <Position>
-        <Filename Value="msg.lpr"/>
-        <Caret Line="56" TopLine="23"/>
-      </Position>
-      <Position>
-        <Filename Value="msg.lpr"/>
-        <Caret Line="59" TopLine="33"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\connection\msg.datamodule.pas"/>
-        <Caret Line="172" Column="30" TopLine="162"/>
-      </Position>
+    <JumpHistory HistoryIndex="19">
       <Position>
         <Filename Value="msg.lpr"/>
         <Caret Line="59" TopLine="38"/>
@@ -177,6 +108,34 @@
       <Position>
         <Filename Value="pas\connection\msg.datamodule.pas"/>
         <Caret Line="89" TopLine="68"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\view\msg.main.pas"/>
+        <Caret Line="48" Column="6" TopLine="34"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\view\msg.main.pas"/>
+        <Caret Line="91" Column="58" TopLine="80"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\msg.datamodule.pas"/>
+        <Caret Line="141" Column="59" TopLine="132"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\msg.datamodule.pas"/>
+        <Caret Line="69" Column="12" TopLine="50"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\msg.datamodule.pas"/>
+        <Caret Line="140" Column="80" TopLine="126"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\view\msg.main.pas"/>
+        <Caret Line="89" Column="23" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\view\msg.main.pas"/>
+        <Caret Line="50" Column="9" TopLine="45"/>
       </Position>
     </JumpHistory>
     <RunParams>

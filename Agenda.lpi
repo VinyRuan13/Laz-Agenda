@@ -90,12 +90,12 @@
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <Target>
-      <Filename Value="D:\Projetos\Lazarus\Agenda\exe\debug\Agenda.exe"/>
+      <Filename Value="C:\Arquivos\Projetos\Lazarus\Agenda\exe\debug\Agenda.exe"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
       <OtherUnitFiles Value="pas\view;pas\connection;pas\class"/>
-      <UnitOutputDirectory Value="D:\Projetos\Lazarus\Agenda\compile"/>
+      <UnitOutputDirectory Value="C:\Arquivos\Projetos\Lazarus\Agenda\compile"/>
     </SearchPaths>
     <Linking>
       <Debugging>
@@ -110,7 +110,7 @@
     </Linking>
     <Other>
       <ExecuteAfter>
-        <Command Value="cmd.exe /c COPY /Y D:\Projetos\Lazarus\Agenda\exe\debug\Agenda.exe D:\Projetos\Lazarus\Agenda\exe\release\Agenda.exe"/>
+        <Command Value="cmd.exe /c COPY /Y C:\Arquivos\Projetos\Lazarus\Agenda\exe\debug\Agenda.exe C:\Arquivos\Projetos\Lazarus\Agenda\exe\release\Agenda.exe"/>
         <CompileReasons Run="False"/>
       </ExecuteAfter>
     </Other>

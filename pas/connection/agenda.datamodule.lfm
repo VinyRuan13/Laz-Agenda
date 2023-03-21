@@ -1,10 +1,11 @@
 object dm: Tdm
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 137
-  HorizontalOffset = 462
-  VerticalOffset = 208
-  Width = 443
+  Height = 171
+  HorizontalOffset = 578
+  VerticalOffset = 260
+  Width = 554
+  PPI = 120
   object ContatosDBF: TDbf
     IndexDefs = <    
       item
@@ -17,8 +18,8 @@ object dm: Tdm
     AfterOpen = ContatosDBFAfterOpen
     BeforePost = ContatosDBFBeforePost
     BeforeDelete = ContatosDBFBeforeDelete
-    Left = 32
-    Top = 16
+    Left = 40
+    Top = 20
   end
   object SequenciaDBF: TDbf
     IndexDefs = <    
@@ -30,8 +31,8 @@ object dm: Tdm
     TableLevel = 4
     FilterOptions = []
     AfterOpen = SequenciaDBFAfterOpen
-    Left = 112
-    Top = 16
+    Left = 140
+    Top = 20
   end
   object HistoricoDBF: TDbf
     IndexDefs = <    
@@ -46,8 +47,8 @@ object dm: Tdm
     FilterOptions = []
     AfterOpen = HistoricoDBFAfterOpen
     BeforePost = HistoricoDBFBeforePost
-    Left = 192
-    Top = 16
+    Left = 240
+    Top = 20
   end
   object UsuariosDBF: TDbf
     IndexDefs = <    
@@ -62,8 +63,8 @@ object dm: Tdm
     BeforePost = UsuariosDBFBeforePost
     AfterPost = UsuariosDBFAfterPost
     BeforeDelete = UsuariosDBFBeforeDelete
-    Left = 264
-    Top = 16
+    Left = 330
+    Top = 20
   end
   object tableUsuarioTemp: TMemDataset
     Active = True
@@ -79,8 +80,8 @@ object dm: Tdm
         DataType = ftString
         Size = 100
       end>
-    Left = 360
-    Top = 16
+    Left = 450
+    Top = 20
   end
   object EnvioDBF: TDbf
     IndexDefs = <    
@@ -93,8 +94,8 @@ object dm: Tdm
     FilterOptions = []
     AfterOpen = EnvioDBFAfterOpen
     BeforePost = EnvioDBFBeforePost
-    Left = 32
-    Top = 72
+    Left = 40
+    Top = 90
   end
   object CGeralDBF: TDbf
     IndexDefs = <    
@@ -107,7 +108,7 @@ object dm: Tdm
     FilterOptions = []
     AfterOpen = CGeralDBFAfterOpen
     BeforePost = CGeralDBFBeforePost
-    Left = 104
-    Top = 72
+    Left = 130
+    Top = 90
   end
 end

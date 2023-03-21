@@ -144,6 +144,8 @@ type
   procedure actSairMenuExecute(Sender: TObject);
   procedure actSalvarConfigExecute(Sender: TObject);
   procedure actUsuariosExecute(Sender: TObject);
+  procedure ContatosDBFBeforeEdit(DataSet: TDataSet);
+  procedure ContatosDBFBeforeInsert(DataSet: TDataSet);
   procedure dtsContatosDataChange(Sender: TObject; Field: TField);
   procedure dtsUsuariosStateChange(Sender: TObject);
   procedure edtBuscaUsuariosChange(Sender: TObject);
@@ -189,7 +191,7 @@ begin
     da.Visible := True;
     ha.Visible := True;
     compl.Visible := True;
-		end;
+  end;
 end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
@@ -210,6 +212,7 @@ begin
   begin
     funcao := TFuncao.Create;
   end;
+
 end;
 
 procedure TfrmMain.FormShow(Sender: TObject);
@@ -247,6 +250,16 @@ end;
 procedure TfrmMain.actUsuariosExecute(Sender: TObject);
 begin
   pageControl.ActivePage := tbsUsuarios;
+end;
+
+procedure TfrmMain.ContatosDBFBeforeEdit(DataSet: TDataSet);
+begin
+  dbeNome.SetFocus;
+end;
+
+procedure TfrmMain.ContatosDBFBeforeInsert(DataSet: TDataSet);
+begin
+  dbeNome.SetFocus;
 end;
 
 procedure TfrmMain.dtsContatosDataChange(Sender: TObject; Field: TField);

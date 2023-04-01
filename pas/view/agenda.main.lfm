@@ -408,6 +408,20 @@ object frmMain: TfrmMain
         ImageIndex = 8
         ParentFont = False
       end
+      object sbtnBackup: TSpeedButton
+        Cursor = crHandPoint
+        Left = 0
+        Height = 50
+        Top = 250
+        Width = 240
+        Action = actBackup
+        Align = alTop
+        Flat = True
+        Font.Color = clMaroon
+        Font.Height = -20
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
     end
     object pnlTelas: TPanel
       Left = 240
@@ -426,9 +440,9 @@ object frmMain: TfrmMain
         Height = 564
         Top = 0
         Width = 791
-        ActivePage = tbsContatos
+        ActivePage = tbsBkp
         Align = alClient
-        TabIndex = 0
+        TabIndex = 5
         TabOrder = 0
         object tbsContatos: TTabSheet
           Caption = 'tbsContatos'
@@ -2634,6 +2648,114 @@ object frmMain: TfrmMain
             end
           end
         end
+        object tbsBkp: TTabSheet
+          Caption = 'tbsBkp'
+          ClientHeight = 531
+          ClientWidth = 783
+          object pgbBackup: TProgressBar
+            Left = 5
+            Height = 345
+            Top = 51
+            Width = 773
+            Align = alClient
+            BorderSpacing.Left = 5
+            BorderSpacing.Top = 20
+            BorderSpacing.Right = 5
+            BorderSpacing.Bottom = 20
+            Max = 0
+            ParentShowHint = False
+            Smooth = True
+            Style = pbstMarquee
+            TabOrder = 0
+          end
+          object pnlButtonBackup: TPanel
+            Left = 0
+            Height = 63
+            Top = 468
+            Width = 783
+            Align = alBottom
+            BevelOuter = bvNone
+            ClientHeight = 63
+            ClientWidth = 783
+            TabOrder = 1
+            object sbtnIniciarBackup: TSpeedButton
+              Cursor = crHandPoint
+              Left = 0
+              Height = 63
+              Top = 0
+              Width = 783
+              Action = actIniciarBackup
+              Align = alClient
+              Font.Color = clMaroon
+              Font.Height = -20
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+          end
+          object pnlDestinoBackup: TPanel
+            Left = 0
+            Height = 52
+            Top = 416
+            Width = 783
+            Align = alBottom
+            BevelOuter = bvNone
+            ClientHeight = 52
+            ClientWidth = 783
+            TabOrder = 2
+            object edtDestino: TEdit
+              Left = 8
+              Height = 31
+              Top = 8
+              Width = 696
+              Font.Color = clMaroon
+              Font.Height = -17
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 0
+            end
+            object SpeedButton1: TSpeedButton
+              Left = 720
+              Height = 31
+              Top = 8
+              Width = 56
+              Action = actAbreDestino
+              Font.Color = clMaroon
+              Font.Height = -25
+              ParentFont = False
+            end
+          end
+          object pnlTituloBackup: TPanel
+            Left = 0
+            Height = 31
+            Top = 0
+            Width = 783
+            Align = alTop
+            BevelOuter = bvNone
+            Caption = 'Backup dos dados do sistema'
+            ClientHeight = 31
+            ClientWidth = 783
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clMaroon
+            Font.Height = -20
+            Font.Pitch = fpVariable
+            Font.Quality = fqDraft
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 3
+            object sbtnSairBackup: TSpeedButton
+              Cursor = crHandPoint
+              Left = 744
+              Height = 31
+              Top = 0
+              Width = 39
+              Action = actSairMenu
+              Align = alRight
+              Flat = True
+              Images = imgList
+              ImageIndex = 6
+            end
+          end
+        end
       end
     end
   end
@@ -2698,6 +2820,18 @@ object frmMain: TfrmMain
       ImageIndex = 6
       OnExecute = actCancelarConfigExecute
       ShortCut = 16430
+    end
+    object actBackup: TAction
+      Caption = 'Backup (F6)'
+      OnExecute = actBackupExecute
+    end
+    object actIniciarBackup: TAction
+      Caption = 'Iniciar backup dos dados'
+      OnExecute = actIniciarBackupExecute
+    end
+    object actAbreDestino: TAction
+      Caption = '...'
+      OnExecute = actAbreDestinoExecute
     end
   end
   object imgList: TImageList
@@ -2888,5 +3022,10 @@ object frmMain: TfrmMain
     DataSet = dm.CGeralDBF
     Left = 130
     Top = 430
+  end
+  object openDlg: TSelectDirectoryDialog
+    Title = 'Selecionar Local'
+    Left = 24
+    Top = 224
   end
 end

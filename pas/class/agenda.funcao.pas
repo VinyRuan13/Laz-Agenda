@@ -3,7 +3,7 @@ unit agenda.funcao;
 interface
 
 uses
-  Windows, SysUtils, WinSock, System.NetEncoding, Classes, md5;
+  Windows, SysUtils, WinSock, System.NetEncoding, Classes, md5, Zipper;
 
 type
 
@@ -28,6 +28,7 @@ type
     procedure ConvertBase64ToFile(Base64, FileName: string);
     function encryptMD5(const texto:string):string;
     function apagarIndices(caminho : String) : Boolean;
+    function compactarZip(origem, destino : String) : Boolean;
 
   end;
 
@@ -36,8 +37,8 @@ implementation
 procedure TFuncao.setarInfoVersao();
 begin
   //''versão compilada!''.
-  dataVersao := '06/03/2023 ';
-  versao := '23.05.01 '; //ano.qtdversaoTotal.versaoDia
+  dataVersao := '01/04/2023 ';
+  versao := '23.06.01 '; //ano.qtdversaoTotal.versaoDia
   dev := 'Vinícius Ruan Brandalize';
 end;
 
@@ -198,6 +199,45 @@ begin
     FindClose(SearchRec);
   end;
   Result := semErros and apagado;
+end;
+
+function TFuncao.compactarZip(origem, destino : String) : Boolean;
+var
+  SearchRec : TSearchRec;
+  semErros : Boolean;
+  encontrou: Boolean;
+  item : TStringList;
+  zip : TZipper;
+begin
+
+  zip := TZipper.Create;
+  item := TStringList.Create;
+  semErros := False;
+  encontrou := True;
+
+  try
+
+    destino := destino+'Agenda.'+FormatDateTime('ddmmyy_hhMMss', Now)+'.zip';
+    FindFirst(origem+'*.DBF', faAnyFile, SearchRec);
+
+    while encontrou do
+    begin
+      item.Add(origem+SearchRec.Name);
+      encontrou := FindNext(SearchRec) = 0;
+    end;
+
+    zip.ZipFiles(destino, item);
+    semErros := True;
+
+  finally
+
+    FindClose(SearchRec);
+    FreeAndNil(item);
+    FreeAndNil(zip);
+    Result := semErros;
+
+  end;
+
 end;
 
 end.

@@ -20,6 +20,9 @@ type
   actConfiguracoes: TAction;
   actIndexar: TAction;
   actCancelarConfig: TAction;
+  actBackup: TAction;
+  actIniciarBackup: TAction;
+  actAbreDestino: TAction;
   actSalvarConfig: TAction;
   actSairMenu: TAction;
   actUsuarios: TAction;
@@ -41,10 +44,13 @@ type
   dbePorta: TDBEdit;
   dbtData: TDBText;
   dbtHora: TDBText;
+  edtDestino: TEdit;
   gbPadroes: TGroupBox;
   Label6: TLabel;
   Label7: TLabel;
   Label8: TLabel;
+  pnlDestinoBackup: TPanel;
+  pnlButtonBackup: TPanel;
   pnlRodapeConfig: TPanel;
   dbrgTLS: TDBRadioGroup;
   dbrgSSL: TDBRadioGroup;
@@ -102,6 +108,7 @@ type
   pnlBuscaUsuarios: TPanel;
   pnlBuscaContatos: TPanel;
   pnlTituloConfig: TPanel;
+  pnlTituloBackup: TPanel;
   pnlUsuarioLogado: TPanel;
   pnlAttContatos: TPanel;
   pnlAttUsuarios: TPanel;
@@ -115,6 +122,7 @@ type
   pnlPrincipal: TPanel;
   pnlTituloHistorico: TPanel;
   pnlTituloUsuario: TPanel;
+  pgbBackup: TProgressBar;
   sbtnIndexar: TSpeedButton;
   sbtnContatos: TSpeedButton;
   sbtnHistorico: TSpeedButton;
@@ -123,21 +131,30 @@ type
   sbtnSairHistorico: TSpeedButton;
   sbtnSairUsuarios: TSpeedButton;
   sbtnSairConfig: TSpeedButton;
+  sbtnSairBackup: TSpeedButton;
   sbtnUsuarios: TSpeedButton;
   sbtnSairContatos: TSpeedButton;
   sbtnSalvarConfig: TSpeedButton;
   sbtnCancelarConfig: TSpeedButton;
+  sbtnBackup: TSpeedButton;
+  sbtnIniciarBackup: TSpeedButton;
+  openDlg: TSelectDirectoryDialog;
+  SpeedButton1: TSpeedButton;
+  tbsBkp: TTabSheet;
   tbsConfiguracao: TTabSheet;
   tbsUsuarios: TTabSheet;
   tbsMain: TTabSheet;
   tbsContatos: TTabSheet;
   tbsHistoricoLogin: TTabSheet;
   timer: TTimer;
+  procedure actAbreDestinoExecute(Sender: TObject);
+  procedure actBackupExecute(Sender: TObject);
   procedure actCancelarConfigExecute(Sender: TObject);
   procedure actConfiguracoesExecute(Sender: TObject);
   procedure actContatosExecute(Sender: TObject);
   procedure actHistoricoLoginExecute(Sender: TObject);
   procedure actIndexarExecute(Sender: TObject);
+  procedure actIniciarBackupExecute(Sender: TObject);
   procedure actPesquisarContatosExecute(Sender: TObject);
   procedure actPesquisarUsuariosExecute(Sender: TObject);
   procedure actSairExecute(Sender: TObject);
@@ -346,6 +363,19 @@ begin
   pageControl.ActivePage := tbsMain;
 end;
 
+procedure TfrmMain.actAbreDestinoExecute(Sender: TObject);
+begin
+  if openDlg.Execute then
+  begin
+    edtDestino.Text := openDlg.FileName+'\';
+  end;
+end;
+
+procedure TfrmMain.actBackupExecute(Sender: TObject);
+begin
+  pageControl.ActivePage := tbsBkp;
+end;
+
 procedure TfrmMain.actHistoricoLoginExecute(Sender: TObject);
 begin
   pageControl.ActivePage := tbsHistoricoLogin;
@@ -365,6 +395,16 @@ begin
   begin
     dm.indexarTodos();
   end;
+end;
+
+procedure TfrmMain.actIniciarBackupExecute(Sender: TObject);
+begin
+  dm.abrirFecharTabelas('FECHAR');
+  if funcao.compactarZip(dm.SettingsIni.ReadString('NTX', 'PATH', ''), edtDestino.Text) then
+  begin
+    TfrmMessage.Mensagem('Backup realizado com sucesso!', 'Aviso', 'I', [mbOk]);
+  end;
+  dm.abrirFecharTabelas('ABRIR');
 end;
 
 procedure TfrmMain.actPesquisarContatosExecute(Sender: TObject);

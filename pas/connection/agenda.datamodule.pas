@@ -36,21 +36,21 @@ type
   procedure UsuariosDBFBeforeDelete(DataSet: TDataSet);
   procedure UsuariosDBFBeforePost(DataSet: TDataSet);
  private
-  SettingsIni : TIniFile;
   procedure definirLocalDBFs();
   procedure criarArquivoIni();
   procedure definirIndices();
-  procedure abrirFecharTabelas(Operacao : String);
   function atualizarSequencia(Tabela : String) : Integer;
   procedure inserirUserTemp(Temp : TMemDataset ; Real : TDbf);
 
  public
+  SettingsIni : TIniFile;
   txtSenhaAntiga : String;
   txtSenha : String;
   userLogado : String;
   idUserLogado : Integer;
   procedure indexarTodos();
   procedure fecharIndices();
+  procedure abrirFecharTabelas(Operacao : String);
  end;
 
 var

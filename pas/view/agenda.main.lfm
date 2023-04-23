@@ -440,9 +440,9 @@ object frmMain: TfrmMain
         Height = 564
         Top = 0
         Width = 791
-        ActivePage = tbsBkp
+        ActivePage = tbsHistoricoLogin
         Align = alClient
-        TabIndex = 5
+        TabIndex = 1
         TabOrder = 0
         object tbsContatos: TTabSheet
           Caption = 'tbsContatos'

@@ -28,7 +28,8 @@ type
     procedure ConvertBase64ToFile(Base64, FileName: string);
     function encryptMD5(const texto:string):string;
     function apagarIndices(caminho : String) : Boolean;
-    function compactarZip(origem, destino : String) : Boolean;
+    function compactarZip(origem, destino, metodo: String) : Boolean;
+    function executarCmdExterno(comando : String) : Boolean;
 
   end;
 
@@ -37,8 +38,8 @@ implementation
 procedure TFuncao.setarInfoVersao();
 begin
   //''versão compilada!''.
-  dataVersao := '01/04/2023 ';
-  versao := '23.06.01 '; //ano.qtdversaoTotal.versaoDia
+  dataVersao := '22/04/2023 ';
+  versao := '23.07.01 '; //ano.qtdversaoTotal.versaoDia
   dev := 'Vinícius Ruan Brandalize';
 end;
 
@@ -201,41 +202,64 @@ begin
   Result := semErros and apagado;
 end;
 
-function TFuncao.compactarZip(origem, destino : String) : Boolean;
+function TFuncao.compactarZip(origem, destino, metodo: String) : Boolean;
 var
   SearchRec : TSearchRec;
   semErros : Boolean;
   encontrou: Boolean;
-  item : TStringList;
   zip : TZipper;
+  cmd : String;
 begin
 
   zip := TZipper.Create;
-  item := TStringList.Create;
   semErros := False;
   encontrou := True;
 
   try
-
     destino := destino+'Agenda.'+FormatDateTime('ddmmyy_hhMMss', Now)+'.zip';
-    FindFirst(origem+'*.DBF', faAnyFile, SearchRec);
-
-    while encontrou do
+    if metodo = 'N' then  //usa a biblioteca nativa do pascal
     begin
-      item.Add(origem+SearchRec.Name);
-      encontrou := FindNext(SearchRec) = 0;
+      try
+        FindFirst(origem+'*.DBF', faAnyFile, SearchRec);
+        while encontrou do
+        begin
+          zip.Files.Add(origem+SearchRec.Name);
+          encontrou := FindNext(SearchRec) = 0;
+        end;
+        zip.SaveToFile(destino);
+        semErros := True;
+      finally
+        FindClose(SearchRec);
+        FreeAndNil(zip);
+      end;
     end;
 
-    zip.ZipFiles(destino, item);
-    semErros := True;
+    if metodo = 'C' then //usa o winrar no prompt de comando
+    begin
+      cmd := 'RAR.EXE A -T -EP1 "'+destino+'" "'+origem+'*.DBF"';
+      if executarCmdExterno(cmd) then
+      begin
+        semErros := True;
+      end;
+    end;
 
   finally
-
-    FindClose(SearchRec);
-    FreeAndNil(item);
-    FreeAndNil(zip);
     Result := semErros;
+  end;
 
+end;
+
+function TFuncao.executarCmdExterno(comando: String): Boolean;
+var
+  concluido: boolean;
+begin
+
+  //executa qualquer comando do prompt
+  try
+    WinExec(PAnsiChar(AnsiString('cmd.exe /c "'+comando+'"')),SW_SHOW);
+    concluido := true;
+  finally
+    Result := concluido;
   end;
 
 end;

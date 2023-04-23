@@ -64,6 +64,7 @@ begin
   dtsHistorico.DataSet.FieldByName('ID_USUARIO').AsInteger := id;
   dtsHistorico.DataSet.FieldByName('USUARIO').AsString := user;
   dtsHistorico.DataSet.FieldByName('PROCESSO').AsString := 'AGENDA.EXE';
+  dtsHistorico.DataSet.FieldByName('LOG').AsString := 'L';
   dtsHistorico.DataSet.Post;
 end;
 

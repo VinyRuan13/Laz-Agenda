@@ -31,6 +31,7 @@ begin
   dm.HistoricoDBF.FieldByName('ID_USUARIO').AsInteger := 0;
   dm.HistoricoDBF.FieldByName('USUARIO').AsString := 'PROCESSO AUTOMATICO';
   dm.HistoricoDBF.FieldByName('PROCESSO').AsString := 'MSG.EXE';
+  dm.HistoricoDBF.FieldByName('LOG').AsString := 'L';
   dm.HistoricoDBF.Post;
 
   //verifica se tem aniversariantes

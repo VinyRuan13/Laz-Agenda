@@ -174,6 +174,7 @@ type
   procedure timerTimer(Sender: TObject);
  private
   procedure travarDataHoraAtt(dts : TDataSet; da, ha : TDBText; compl : TLabel);
+  procedure gravarLogBackup();
  public
   idUsuarioLogado : Integer;
   nomeUsuarioLogado : String;
@@ -209,6 +210,20 @@ begin
     ha.Visible := True;
     compl.Visible := True;
   end;
+end;
+
+procedure TfrmMain.gravarLogBackup;
+begin
+  dtsHistorico.DataSet.Insert;
+  dtsHistorico.DataSet.FieldByName('DATA').AsDateTime := Now;
+  dtsHistorico.DataSet.FieldByName('HORA').AsString := TimeToStr(Time);
+  dtsHistorico.DataSet.FieldByName('MAQUINA').AsString := funcao.retornarPc();
+  dtsHistorico.DataSet.FieldByName('IP').AsString := funcao.retornaIP();
+  dtsHistorico.DataSet.FieldByName('ID_USUARIO').AsInteger := idUsuarioLogado;
+  dtsHistorico.DataSet.FieldByName('USUARIO').AsString := nomeUsuarioLogado;
+  dtsHistorico.DataSet.FieldByName('PROCESSO').AsString := 'AGENDA.EXE';
+  dtsHistorico.DataSet.FieldByName('LOG').AsString := 'B';
+  dtsHistorico.DataSet.Post;
 end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
@@ -399,12 +414,21 @@ end;
 
 procedure TfrmMain.actIniciarBackupExecute(Sender: TObject);
 begin
-  dm.abrirFecharTabelas('FECHAR');
-  if funcao.compactarZip(dm.SettingsIni.ReadString('NTX', 'PATH', ''), edtDestino.Text) then
+  if edtDestino.Text <> '' then
   begin
-    TfrmMessage.Mensagem('Backup realizado com sucesso!', 'Aviso', 'I', [mbOk]);
+     dm.abrirFecharTabelas('FECHAR');
+     if funcao.compactarZip(dm.SettingsIni.ReadString('DBF', 'PATH', ''), edtDestino.Text, 'C') then
+     begin
+       dm.abrirFecharTabelas('ABRIR');
+       gravarLogBackup();
+       TfrmMessage.Mensagem('Backup realizado com sucesso!', 'Aviso', 'I', [mbOk]);
+     end;
+  end
+  else
+  begin
+    TfrmMessage.Mensagem('Selecione primeiramente o diretório para salvar o backup!',
+                                    'Aviso', 'C', [mbOk]);
   end;
-  dm.abrirFecharTabelas('ABRIR');
 end;
 
 procedure TfrmMain.actPesquisarContatosExecute(Sender: TObject);

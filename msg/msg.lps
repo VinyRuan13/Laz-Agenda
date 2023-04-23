@@ -8,8 +8,8 @@
       <Unit>
         <Filename Value="msg.lpr"/>
         <IsPartOfProject Value="True"/>
-        <TopLine Value="34"/>
-        <CursorPos X="47" Y="44"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="36" Y="15"/>
         <UsageCount Value="44"/>
         <Loaded Value="True"/>
       </Unit>
@@ -19,9 +19,8 @@
         <ComponentName Value="frmMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="15"/>
+        <CursorPos X="11" Y="5"/>
         <UsageCount Value="44"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>

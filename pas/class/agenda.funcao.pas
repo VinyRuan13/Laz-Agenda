@@ -3,7 +3,7 @@ unit agenda.funcao;
 interface
 
 uses
-  Windows, SysUtils, WinSock, System.NetEncoding, Classes, md5, Zipper;
+  Windows, SysUtils, WinSock, System.NetEncoding, Classes, md5, Zipper, process;
 
 type
 
@@ -211,7 +211,6 @@ var
   cmd : String;
 begin
 
-  zip := TZipper.Create;
   semErros := False;
   encontrou := True;
 
@@ -220,6 +219,7 @@ begin
     if metodo = 'N' then  //usa a biblioteca nativa do pascal
     begin
       try
+        zip := TZipper.Create;
         FindFirst(origem+'*.DBF', faAnyFile, SearchRec);
         while encontrou do
         begin
@@ -252,13 +252,19 @@ end;
 function TFuncao.executarCmdExterno(comando: String): Boolean;
 var
   concluido: boolean;
+  Processo: TProcess;
 begin
 
   //executa qualquer comando do prompt
   try
-    WinExec(PAnsiChar(AnsiString('cmd.exe /c "'+comando+'"')),SW_SHOW);
+    Processo := TProcess.Create(nil);
+    Processo.CommandLine := 'cmd.exe /c "'+comando+'"';
+    Processo.Options := Processo.Options + [poWaitOnExit]; //executa ate acabar
+    Processo.ShowWindow := swoHIDE;
+    Processo.Execute;
     concluido := true;
   finally
+    FreeAndNil(Processo);
     Result := concluido;
   end;
 

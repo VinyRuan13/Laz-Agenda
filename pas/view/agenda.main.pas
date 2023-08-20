@@ -6,9 +6,9 @@ interface
 
 uses
  Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, ExtCtrls, ActnList,
-	Buttons, ComCtrls, DBGrids, DBCtrls, StdCtrls, DBDateTimePicker,
-	agenda.funcao, agenda.datamodule, agenda.message, LCLType,
-        agenda.loading;
+ Buttons, ComCtrls, DBGrids, DBCtrls, StdCtrls, DBDateTimePicker, LR_Class,
+ lr_e_pdf, agenda.funcao, agenda.datamodule, agenda.message, LCLType, Spin,
+ agenda.loading;
 
 type
 
@@ -23,6 +23,8 @@ type
   actBackup: TAction;
   actIniciarBackup: TAction;
   actAbreDestino: TAction;
+  actGeraRelatorio: TAction;
+  actRelatorio: TAction;
   actSalvarConfig: TAction;
   actSairMenu: TAction;
   actUsuarios: TAction;
@@ -45,10 +47,19 @@ type
   dbtData: TDBText;
   dbtHora: TDBText;
   edtDestino: TEdit;
+  frReport: TfrReport;
+  frTNPDFExport: TfrTNPDFExport;
+  gbInformarPeriodo: TGroupBox;
   gbPadroes: TGroupBox;
+  imgPrincipal: TImage;
+  lblInicialMesAno: TLabel;
   Label6: TLabel;
   Label7: TLabel;
   Label8: TLabel;
+  lblFinalMesAno: TLabel;
+  pnlGeraRelatorio: TPanel;
+  pnlFundoRelatorio: TPanel;
+  pnlFundoMain: TPanel;
   pnlDestinoBackup: TPanel;
   pnlButtonBackup: TPanel;
   pnlRodapeConfig: TPanel;
@@ -87,7 +98,6 @@ type
   edtSenhaUsuario: TEdit;
   edtSenhaAntigaUsuario: TEdit;
   imgUserLogado: TImage;
-  imgPrincipal: TImage;
   imgList: TImageList;
   lblas2Usuarios: TLabel;
   lblasContatos: TLabel;
@@ -109,6 +119,7 @@ type
   pnlBuscaContatos: TPanel;
   pnlTituloConfig: TPanel;
   pnlTituloBackup: TPanel;
+  pnlTituloRelatorio: TPanel;
   pnlUsuarioLogado: TPanel;
   pnlAttContatos: TPanel;
   pnlAttUsuarios: TPanel;
@@ -123,12 +134,18 @@ type
   pnlTituloHistorico: TPanel;
   pnlTituloUsuario: TPanel;
   pgbBackup: TProgressBar;
+  rgOrdenar: TRadioGroup;
+  rgTipoRel: TRadioGroup;
+  rgInformarMes: TRadioGroup;
+  sbtnCancelarConfig1: TSpeedButton;
+  sbtnRelatorio: TSpeedButton;
   sbtnIndexar: TSpeedButton;
   sbtnContatos: TSpeedButton;
   sbtnHistorico: TSpeedButton;
   sbtnConfig: TSpeedButton;
   sbtnSair: TSpeedButton;
   sbtnSairHistorico: TSpeedButton;
+  sbtnSairRelatorio: TSpeedButton;
   sbtnSairUsuarios: TSpeedButton;
   sbtnSairConfig: TSpeedButton;
   sbtnSairBackup: TSpeedButton;
@@ -140,6 +157,9 @@ type
   sbtnIniciarBackup: TSpeedButton;
   openDlg: TSelectDirectoryDialog;
   SpeedButton1: TSpeedButton;
+  edtMesIni: TSpinEdit;
+  edtMesFin: TSpinEdit;
+  tbsRelatorio: TTabSheet;
   tbsBkp: TTabSheet;
   tbsConfiguracao: TTabSheet;
   tbsUsuarios: TTabSheet;
@@ -152,11 +172,13 @@ type
   procedure actCancelarConfigExecute(Sender: TObject);
   procedure actConfiguracoesExecute(Sender: TObject);
   procedure actContatosExecute(Sender: TObject);
+  procedure actGeraRelatorioExecute(Sender: TObject);
   procedure actHistoricoLoginExecute(Sender: TObject);
   procedure actIndexarExecute(Sender: TObject);
   procedure actIniciarBackupExecute(Sender: TObject);
   procedure actPesquisarContatosExecute(Sender: TObject);
   procedure actPesquisarUsuariosExecute(Sender: TObject);
+  procedure actRelatorioExecute(Sender: TObject);
   procedure actSairExecute(Sender: TObject);
   procedure actSairMenuExecute(Sender: TObject);
   procedure actSalvarConfigExecute(Sender: TObject);
@@ -171,6 +193,7 @@ type
   procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
   procedure FormCreate(Sender: TObject);
   procedure FormShow(Sender: TObject);
+  procedure rgTipoRelClick(Sender: TObject);
   procedure timerTimer(Sender: TObject);
  private
   procedure travarDataHoraAtt(dts : TDataSet; da, ha : TDBText; compl : TLabel);
@@ -260,6 +283,27 @@ begin
   dtsSequencia.DataSet.Open;
   dtsCGeral.DataSet.Open;
   dtsEnvio.DataSet.Open;
+end;
+
+procedure TfrmMain.rgTipoRelClick(Sender: TObject);
+begin
+  rgOrdenar.Visible := False;
+  if rgTipoRel.ItemIndex = 0 then
+  begin
+    rgInformarMes.Visible := False;
+    gbInformarPeriodo.Visible := False;
+  end;
+  if rgTipoRel.ItemIndex = 1 then
+  begin
+    rgInformarMes.Visible := True;
+    gbInformarPeriodo.Visible := False;
+  end;
+  if rgTipoRel.ItemIndex = 2 then
+  begin
+    rgInformarMes.Visible := False;
+    gbInformarPeriodo.Visible := True;
+  end;
+  rgOrdenar.Visible := True;
 end;
 
 procedure TfrmMain.actSairExecute(Sender: TObject);
@@ -363,6 +407,49 @@ begin
   pageControl.ActivePage := tbsContatos;
 end;
 
+procedure TfrmMain.actGeraRelatorioExecute(Sender: TObject);
+var
+ Mes: Array[1..12] of String = (
+            'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+            'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro');
+ periodo: String;
+begin
+
+  dtsContatos.DataSet.Close;
+  dm.frDBDataSet.Close;
+  dm.frDBDataSet.DataSet.Close;
+
+  if rgTipoRel.ItemIndex = 1 then
+  begin
+    dm.frDBDataSet.Open;
+    dm.frDBDataSet.DataSet.Filter := 'SUBSTR(DTOS(NASCIMENTO), 5, 2) = '+QuotedStr(FormatFloat('00', rgInformarMes.ItemIndex+1));
+    dm.frDBDataSet.DataSet.Filtered := True;
+    periodo := 'Mês de '+Mes[rgInformarMes.ItemIndex+1];
+  end
+  else
+  if rgTipoRel.ItemIndex = 2 then
+  begin
+    dm.frDBDataSet.Open;
+    dm.frDBDataSet.DataSet.Filter := 'SUBSTR(DTOS(NASCIMENTO), 5, 2) >= '+QuotedStr(FormatFloat('00', StrToFloat(edtMesIni.Text)))+' AND '+
+                                     'SUBSTR(DTOS(NASCIMENTO), 5, 2) <= '+QuotedStr(FormatFloat('00', StrToFloat(edtMesFin.Text)));
+    dm.frDBDataSet.DataSet.Filtered := True;
+    periodo := 'Período: '+Mes[StrToInt(edtMesIni.Text)]+' á '+Mes[StrToInt(edtMesFin.Text)];
+  end
+  else
+  begin
+    dm.frDBDataSet.Open;
+    dm.frDBDataSet.DataSet.Filtered := False;
+    periodo := 'Anual';
+  end;
+
+  dm.abrirIndiceRelatorio(rgOrdenar.ItemIndex);
+  frReport.LoadFromFile('reports\aniversariantes.lrf');
+  frReport.FindObject('Memo10').Memo.Text := periodo;
+  frReport.ShowReport;
+  dtsContatos.DataSet.Open;
+
+end;
+
 procedure TfrmMain.actConfiguracoesExecute(Sender: TObject);
 begin
   pageControl.ActivePage := tbsConfiguracao;
@@ -456,7 +543,12 @@ begin
   else
   begin
     dtsUsuarios.DataSet.Locate('NOME', edtBuscaUsuarios.Text, [loCaseInsensitive, loPartialKey]);
-		end;
+  end;
+end;
+
+procedure TfrmMain.actRelatorioExecute(Sender: TObject);
+begin
+  pageControl.ActivePage := tbsRelatorio;
 end;
 
 end.

@@ -1,31 +1,31 @@
 object frmMessage: TfrmMessage
   Left = 622
-  Height = 140
+  Height = 164
   Top = 268
-  Width = 350
+  Width = 438
   BorderStyle = bsDialog
   Caption = 'Mensagem'
-  ClientHeight = 140
-  ClientWidth = 350
+  ClientHeight = 164
+  ClientWidth = 438
+  DesignTimePPI = 120
   Position = poScreenCenter
-  LCLVersion = '2.2.4.0'
   object pnlIcones: TPanel
     Left = 0
-    Height = 100
+    Height = 124
     Top = 0
-    Width = 70
+    Width = 88
     Align = alLeft
     BevelOuter = bvNone
-    ClientHeight = 100
-    ClientWidth = 70
+    ClientHeight = 124
+    ClientWidth = 88
     Color = clWhite
     ParentColor = False
     TabOrder = 0
     object imgDeletar: TImage
       Left = 0
-      Height = 50
+      Height = 62
       Top = 0
-      Width = 70
+      Width = 88
       Align = alTop
       Center = True
       Picture.Data = {
@@ -1879,9 +1879,9 @@ object frmMessage: TfrmMessage
     end
     object imgQuestao: TImage
       Left = 0
-      Height = 50
-      Top = 50
-      Width = 70
+      Height = 62
+      Top = 62
+      Width = 88
       Align = alTop
       Center = True
       Picture.Data = {
@@ -2441,9 +2441,9 @@ object frmMessage: TfrmMessage
     end
     object imgCuidado: TImage
       Left = 0
-      Height = 50
-      Top = 100
-      Width = 70
+      Height = 62
+      Top = 124
+      Width = 88
       Align = alTop
       Center = True
       Picture.Data = {
@@ -2474,9 +2474,9 @@ object frmMessage: TfrmMessage
     end
     object imgInformacao: TImage
       Left = 0
-      Height = 50
-      Top = 100
-      Width = 70
+      Height = 62
+      Top = 124
+      Width = 88
       Align = alTop
       Center = True
       Picture.Data = {
@@ -3036,9 +3036,9 @@ object frmMessage: TfrmMessage
     end
     object imgErro: TImage
       Left = 0
-      Height = 50
-      Top = 100
-      Width = 70
+      Height = 62
+      Top = 124
+      Width = 88
       Align = alTop
       Center = True
       Picture.Data = {
@@ -3598,27 +3598,27 @@ object frmMessage: TfrmMessage
     end
   end
   object pnlMensagem: TPanel
-    Left = 70
-    Height = 100
+    Left = 88
+    Height = 124
     Top = 0
-    Width = 280
+    Width = 350
     Align = alClient
     BevelOuter = bvNone
     BorderWidth = 10
-    ClientHeight = 100
-    ClientWidth = 280
+    ClientHeight = 124
+    ClientWidth = 350
     Color = clWhite
     ParentColor = False
     TabOrder = 1
     object lblMensagem: TLabel
       Left = 10
-      Height = 80
+      Height = 104
       Top = 10
-      Width = 260
+      Width = 330
       Align = alClient
       Caption = 'lblMensagem'
       Font.CharSet = ANSI_CHARSET
-      Font.Height = -13
+      Font.Height = -16
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentColor = False
@@ -3629,20 +3629,21 @@ object frmMessage: TfrmMessage
   object pnlBotoes: TPanel
     Left = 0
     Height = 40
-    Top = 100
-    Width = 350
+    Top = 124
+    Width = 438
     Align = alBottom
     BevelOuter = bvLowered
     ClientHeight = 40
-    ClientWidth = 350
+    ClientWidth = 438
     Color = clWhite
     ParentColor = False
     TabOrder = 2
     object btnSim: TBitBtn
-      Left = 184
-      Height = 30
-      Top = 6
-      Width = 75
+      Left = 249
+      Height = 38
+      Top = 1
+      Width = 94
+      Align = alRight
       Caption = '&Sim'
       Font.CharSet = ANSI_CHARSET
       Font.Pitch = fpVariable
@@ -3656,10 +3657,11 @@ object frmMessage: TfrmMessage
       Visible = False
     end
     object btnNao: TBitBtn
-      Left = 265
-      Height = 30
-      Top = 6
-      Width = 75
+      Left = 343
+      Height = 38
+      Top = 1
+      Width = 94
+      Align = alRight
       Caption = '&Não'
       Font.CharSet = ANSI_CHARSET
       Font.Pitch = fpVariable
@@ -3673,10 +3675,11 @@ object frmMessage: TfrmMessage
       Visible = False
     end
     object btnOk: TBitBtn
-      Left = 104
-      Height = 30
-      Top = 6
-      Width = 75
+      Left = 155
+      Height = 38
+      Top = 1
+      Width = 94
+      Align = alRight
       Caption = '&OK'
       Default = True
       Font.CharSet = ANSI_CHARSET
@@ -3692,8 +3695,8 @@ object frmMessage: TfrmMessage
     end
   end
   object ImgList: TImageList
-    Left = 208
-    Top = 72
+    Left = 260
+    Top = 90
     Bitmap = {
       4C7A030000001000000010000000C40500000000000078DA95567B4C935714FF
       70AD6DA5EDD7F6EBD33E2C50848284481D0FA714A311109C82BC948014444505

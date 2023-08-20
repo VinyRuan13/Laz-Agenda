@@ -38,8 +38,8 @@ implementation
 procedure TFuncao.setarInfoVersao();
 begin
   //''versão compilada!''.
-  dataVersao := '22/04/2023 ';
-  versao := '23.07.01 '; //ano.qtdversaoTotal.versaoDia
+  dataVersao := '20/08/2023 ';
+  versao := '23.08.01 '; //ano.qtdversaoTotal.versaoDia
   dev := 'Vinícius Ruan Brandalize';
 end;
 

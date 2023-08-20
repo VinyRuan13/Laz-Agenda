@@ -19,8 +19,7 @@
 
 #Pastas de compilacao
 compile/
-exe/debug/
-exe/release/
+exe/
 service/compile/
 msg/compile/
 

@@ -6,7 +6,7 @@ interface
 
 uses
  Classes, SysUtils, dbf, IniFiles, DB, memds, agenda.funcao, agenda.message,
- agenda.loading;
+ agenda.loading, LR_DBSet;
 
 type
 
@@ -14,8 +14,10 @@ type
 
  Tdm = class(TDataModule)
   ContatosDBF: TDbf;
+  QryAniversariante: TDbf;
   EnvioDBF: TDbf;
   CGeralDBF: TDbf;
+  frDBDataSet: TfrDBDataSet;
   tableUsuarioTemp: TMemDataset;
   UsuariosDBF: TDbf;
   HistoricoDBF: TDbf;
@@ -30,6 +32,8 @@ type
   procedure EnvioDBFBeforePost(DataSet: TDataSet);
   procedure HistoricoDBFAfterOpen(DataSet: TDataSet);
   procedure HistoricoDBFBeforePost(DataSet: TDataSet);
+  procedure QryAniversarianteAfterClose(DataSet: TDataSet);
+  procedure QryAniversarianteBeforeOpen(DataSet: TDataSet);
   procedure SequenciaDBFAfterOpen(DataSet: TDataSet);
   procedure UsuariosDBFAfterOpen(DataSet: TDataSet);
   procedure UsuariosDBFAfterPost(DataSet: TDataSet);
@@ -51,6 +55,7 @@ type
   procedure indexarTodos();
   procedure fecharIndices();
   procedure abrirFecharTabelas(Operacao : String);
+  procedure abrirIndiceRelatorio(indice: Integer);
  end;
 
 var
@@ -101,6 +106,16 @@ begin
   begin
     DataSet.FieldByName('ID').AsInteger := atualizarSequencia('HISTORICO');
   end;
+end;
+
+procedure Tdm.QryAniversarianteAfterClose(DataSet: TDataSet);
+begin
+  ContatosDBF.Open;
+end;
+
+procedure Tdm.QryAniversarianteBeforeOpen(DataSet: TDataSet);
+begin
+  ContatosDBF.Close;
 end;
 
 procedure Tdm.SequenciaDBFAfterOpen(DataSet: TDataSet);
@@ -245,6 +260,7 @@ begin
  UsuariosDBF.FilePathFull :=  SettingsIni.ReadString('DBF', 'PATH', '');
  EnvioDBF.FilePathFull    :=  SettingsIni.ReadString('DBF', 'PATH', '');
  CGeralDBF.FilePathFull   :=  SettingsIni.ReadString('DBF', 'PATH', '');
+ QryAniversariante.FilePathFull :=  SettingsIni.ReadString('DBF', 'PATH', '');
 end;
 
 procedure Tdm.criarArquivoIni;
@@ -292,6 +308,18 @@ begin
   CGeralDBF.Indexes[0].IndexFile := SettingsIni.ReadString('NTX', 'PATH', '')+'CGERAL.NTX';
   CGeralDBF.IndexName := SettingsIni.ReadString('NTX', 'PATH', '')+'CGERAL.NTX';
   CGeralDBF.Indexes[0].SortField := 'ID';
+
+  QryAniversariante.Indexes[0].IndexFile := SettingsIni.ReadString('NTX', 'PATH', '')+'ANIVERSARIANTES_ID.NTX';
+  QryAniversariante.IndexName := SettingsIni.ReadString('NTX', 'PATH', '')+'ANIVERSARIANTES_ID.NTX';
+  QryAniversariante.Indexes[0].SortField := 'ID';
+
+  QryAniversariante.Indexes[1].IndexFile := SettingsIni.ReadString('NTX', 'PATH', '')+'ANIVERSARIANTES_NOME.NTX';
+  QryAniversariante.IndexName := SettingsIni.ReadString('NTX', 'PATH', '')+'ANIVERSARIANTES_NOME.NTX';
+  QryAniversariante.Indexes[1].SortField := 'NOME';
+
+  QryAniversariante.Indexes[2].IndexFile := SettingsIni.ReadString('NTX', 'PATH', '')+'ANIVERSARIANTES_DATA.NTX';
+  QryAniversariante.IndexName := SettingsIni.ReadString('NTX', 'PATH', '')+'ANIVERSARIANTES_DATA.NTX';
+  QryAniversariante.Indexes[2].SortField := 'SUBSTR(DTOS(NASCIMENTO),5,4)';
 
 end;
 
@@ -383,6 +411,15 @@ begin
   end;
 
   Real.First;
+end;
+
+procedure Tdm.abrirIndiceRelatorio(indice: Integer);
+begin
+  case indice of
+    0: QryAniversariante.IndexName := SettingsIni.ReadString('NTX', 'PATH', '')+'ANIVERSARIANTES_ID.NTX';
+    1: QryAniversariante.IndexName := SettingsIni.ReadString('NTX', 'PATH', '')+'ANIVERSARIANTES_NOME.NTX';
+    2: QryAniversariante.IndexName := SettingsIni.ReadString('NTX', 'PATH', '')+'ANIVERSARIANTES_DATA.NTX';
+  end;
 end;
 
 procedure Tdm.indexarTodos;

@@ -11,6 +11,7 @@
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
       <XPManifest>
+        <DpiAware Value="True"/>
         <LongPathAware Value="True"/>
         <AnsiUTF8 Value="True"/>
       </XPManifest>
@@ -27,6 +28,12 @@
       <FormatVersion Value="2"/>
     </RunParams>
     <RequiredPackages>
+      <Item>
+        <PackageName Value="lazreportpdfexport"/>
+      </Item>
+      <Item>
+        <PackageName Value="lazreport"/>
+      </Item>
       <Item>
         <PackageName Value="FCL"/>
       </Item>
@@ -90,12 +97,12 @@
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <Target>
-      <Filename Value="D:\Projetos\Lazarus\Agenda\exe\debug\Agenda.exe"/>
+      <Filename Value="exe\AgendaDef.exe"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
       <OtherUnitFiles Value="pas\view;pas\connection;pas\class"/>
-      <UnitOutputDirectory Value="D:\Projetos\Lazarus\Agenda\compile"/>
+      <UnitOutputDirectory Value="compile\winDef"/>
     </SearchPaths>
     <Linking>
       <Debugging>
@@ -110,7 +117,6 @@
     </Linking>
     <Other>
       <ExecuteAfter>
-        <Command Value="cmd.exe /c COPY /Y D:\Projetos\Lazarus\Agenda\exe\debug\Agenda.exe D:\Projetos\Lazarus\Agenda\exe\release\Agenda.exe"/>
         <CompileReasons Run="False"/>
       </ExecuteAfter>
     </Other>

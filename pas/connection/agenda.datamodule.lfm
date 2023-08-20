@@ -1,10 +1,10 @@
 object dm: Tdm
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 171
+  Height = 257
   HorizontalOffset = 578
   VerticalOffset = 260
-  Width = 554
+  Width = 749
   PPI = 120
   object ContatosDBF: TDbf
     IndexDefs = <    
@@ -110,5 +110,28 @@ object dm: Tdm
     BeforePost = CGeralDBFBeforePost
     Left = 130
     Top = 90
+  end
+  object frDBDataSet: TfrDBDataSet
+    DataSet = QryAniversariante
+    Left = 40
+    Top = 176
+  end
+  object QryAniversariante: TDbf
+    IndexDefs = <    
+      item
+        Options = [ixCaseInsensitive]
+      end    
+      item
+        Options = [ixCaseInsensitive]
+      end    
+      item
+        Options = []
+      end>
+    OpenMode = omAutoCreate
+    TableName = 'CONTATOS.DBF'
+    TableLevel = 4
+    FilterOptions = []
+    Left = 160
+    Top = 176
   end
 end

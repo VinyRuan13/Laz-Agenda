@@ -10,7 +10,7 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, memdslaz, sdflaz, SysUtils, msg.main, msg.message, msg.datamodule,
+  Forms, memdslaz, SysUtils, msg.main, msg.message, msg.datamodule,
   msg.funcao
   { you can add units after this };
 

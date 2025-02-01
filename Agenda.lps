@@ -3,8 +3,8 @@
   <ProjectSession>
     <PathDelim Value="\"/>
     <Version Value="12"/>
-    <BuildModes Active="Win32">
-      <Item Name="Win64">
+    <BuildModes Active="Linux64 Release">
+      <Item Name="Win64 Debug">
         <CompilerOptions>
           <Version Value="11"/>
           <PathDelim Value="\"/>
@@ -38,7 +38,7 @@
           </Other>
         </CompilerOptions>
       </Item>
-      <Item Name="Win32">
+      <Item Name="Win32 Debug">
         <CompilerOptions>
           <Version Value="11"/>
           <PathDelim Value="\"/>
@@ -66,7 +66,214 @@
             </Options>
           </Linking>
           <Other>
-            <CompilerPath Value="D:\IDE\Lazarus\FPC\3.2.2\bin\i386-win32\fpc.exe"/>
+            <ExecuteAfter>
+              <CompileReasons Run="False"/>
+            </ExecuteAfter>
+          </Other>
+        </CompilerOptions>
+      </Item>
+      <Item Name="Linux32 Debug">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="exe\AgendaLx32"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="pas\view;pas\connection;pas\class"/>
+            <UnitOutputDirectory Value="compile\linux32"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <TargetCPU Value="i386"/>
+            <TargetOS Value="linux"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <DebugInfoType Value="dsDwarf2Set"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <ExecuteAfter>
+              <CompileReasons Run="False"/>
+            </ExecuteAfter>
+          </Other>
+        </CompilerOptions>
+      </Item>
+      <Item Name="Linux64 Debug">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="exe\AgendaLx64"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="pas\view;pas\connection;pas\class"/>
+            <UnitOutputDirectory Value="compile\linux64"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <TargetCPU Value="x86_64"/>
+            <TargetOS Value="linux"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <DebugInfoType Value="dsDwarf2Set"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <ExecuteAfter>
+              <CompileReasons Run="False"/>
+            </ExecuteAfter>
+          </Other>
+        </CompilerOptions>
+      </Item>
+      <Item Name="Win32 Release">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="exe\Agenda32.exe"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="pas\view;pas\connection;pas\class"/>
+            <UnitOutputDirectory Value="compile\win32"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <TargetCPU Value="i386"/>
+            <TargetOS Value="win32"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <DebugInfoType Value="dsDwarf2Set"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <ExecuteAfter>
+              <CompileReasons Run="False"/>
+            </ExecuteAfter>
+          </Other>
+        </CompilerOptions>
+      </Item>
+      <Item Name="Win64 Release">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="exe\Agenda64.exe"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="pas\view;pas\connection;pas\class"/>
+            <UnitOutputDirectory Value="compile\win64"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <TargetCPU Value="x86_64"/>
+            <TargetOS Value="win64"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <DebugInfoType Value="dsDwarf2Set"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <ExecuteAfter>
+              <CompileReasons Run="False"/>
+            </ExecuteAfter>
+          </Other>
+        </CompilerOptions>
+      </Item>
+      <Item Name="Linux32 Release">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="exe\AgendaLx32"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="pas\view;pas\connection;pas\class"/>
+            <UnitOutputDirectory Value="compile\linux32"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <TargetCPU Value="i386"/>
+            <TargetOS Value="linux"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <DebugInfoType Value="dsDwarf2Set"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <ExecuteAfter>
+              <CompileReasons Run="False"/>
+            </ExecuteAfter>
+          </Other>
+        </CompilerOptions>
+      </Item>
+      <Item Name="Linux64 Release">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="exe\AgendaLx64"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="pas\view;pas\connection;pas\class"/>
+            <UnitOutputDirectory Value="compile\linux64"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <TargetCPU Value="x86_64"/>
+            <TargetOS Value="linux"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <DebugInfoType Value="dsDwarf2Set"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
             <ExecuteAfter>
               <CompileReasons Run="False"/>
             </ExecuteAfter>
@@ -78,9 +285,10 @@
       <Unit>
         <Filename Value="Agenda.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="21" Y="32"/>
-        <UsageCount Value="126"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="28" Y="10"/>
+        <UsageCount Value="127"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="pas\view\agenda.main.pas"/>
@@ -88,10 +296,9 @@
         <ComponentName Value="frmMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="422"/>
-        <CursorPos X="69" Y="430"/>
-        <UsageCount Value="126"/>
+        <TopLine Value="526"/>
+        <CursorPos X="34" Y="430"/>
+        <UsageCount Value="127"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -101,10 +308,10 @@
         <ComponentName Value="dm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="415"/>
-        <CursorPos X="77" Y="430"/>
-        <UsageCount Value="126"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="397"/>
+        <CursorPos X="34" Y="412"/>
+        <UsageCount Value="127"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -117,15 +324,16 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="88"/>
         <CursorPos X="29" Y="99"/>
-        <UsageCount Value="126"/>
+        <UsageCount Value="127"/>
       </Unit>
       <Unit>
         <Filename Value="pas\class\agenda.funcao.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="23"/>
-        <CursorPos X="32" Y="41"/>
-        <UsageCount Value="90"/>
+        <TopLine Value="268"/>
+        <CursorPos X="57" Y="274"/>
+        <UsageCount Value="91"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -134,9 +342,9 @@
         <ComponentName Value="frmMessage"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <CursorPos X="29" Y="19"/>
-        <UsageCount Value="69"/>
+        <UsageCount Value="70"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -148,26 +356,10 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="25" Y="16"/>
-        <UsageCount Value="64"/>
+        <UsageCount Value="65"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="pas\connection\agenda.datamodule.pas"/>
-        <Caret Line="307" TopLine="290"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\connection\agenda.datamodule.pas"/>
-        <Caret Line="308" TopLine="290"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\connection\agenda.datamodule.pas"/>
-        <Caret Line="310" TopLine="290"/>
-      </Position>
-      <Position>
-        <Filename Value="pas\connection\agenda.datamodule.pas"/>
-        <Caret Line="312" TopLine="290"/>
-      </Position>
       <Position>
         <Filename Value="pas\connection\agenda.datamodule.pas"/>
         <Caret Line="314" TopLine="290"/>
@@ -271,6 +463,22 @@
       <Position>
         <Filename Value="pas\view\agenda.main.pas"/>
         <Caret Line="439" Column="57" TopLine="425"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\connection\agenda.datamodule.pas"/>
+        <Caret Line="412" Column="34" TopLine="397"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\class\agenda.funcao.pas"/>
+        <Caret Line="8" Column="11"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\class\agenda.funcao.pas"/>
+        <Caret Line="11" Column="12"/>
+      </Position>
+      <Position>
+        <Filename Value="pas\class\agenda.funcao.pas"/>
+        <Caret Line="9" Column="11"/>
       </Position>
     </JumpHistory>
     <RunParams>

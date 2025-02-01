@@ -3,11 +3,15 @@ unit agenda.funcao;
 interface
 
 uses
-  Windows, SysUtils, WinSock, System.NetEncoding, Classes, md5, Zipper, process;
+  {$IFDEF MSWINDOWS}
+  Windows,
+  WinSock,
+  {$ENDIF}
+  SysUtils, System.NetEncoding, Classes, md5, Zipper, process;
 
 type
 
-		{ TFuncao }
+  { TFuncao }
 
   TFuncao = class
   private
@@ -81,6 +85,7 @@ begin
   end;
 end;
 
+{$IFDEF MSWINDOWS}
 function TFuncao.retornaIP: String;
 var
   wsaData : TWSAData;
@@ -88,7 +93,17 @@ begin
   WSAStartup(257, wsaData);
   Result := Trim(inet_ntoa(PInAddr(GetHostByName(nil)^.h_addr_list^)^));
 end;
+{$ENDIF}
 
+{$IFDEF LINUX}
+function TFuncao.retornaIP: String;
+begin
+  //A implementar...
+  Result := '127.0.0.1';
+end;
+{$ENDIF}
+
+{$IFDEF MSWINDOWS}
 function TFuncao.retornarPc: String;
 var
   lpBuffer : PChar;
@@ -105,6 +120,15 @@ const Buff_Size = MAX_COMPUTERNAME_LENGTH + 1;
     Result := '';
   end;
 end;
+{$ENDIF}
+
+{$IFDEF LINUX}
+function TFuncao.retornarPc: String;
+begin
+  //A implementar...
+  Result := 'MEU-PC';
+end;
+{$ENDIF}
 
 procedure TFuncao.ConvertBase64ToFile(Base64, FileName: string);
 var
